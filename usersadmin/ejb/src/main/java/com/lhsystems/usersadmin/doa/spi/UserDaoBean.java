@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -34,9 +35,14 @@ public class UserDaoBean implements UserDao
 	@Override
 	public User findByUsername(String username)
 	{
-		TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_USERNAME, User.class);
-		query.setParameter("username", username);
-		return query.getSingleResult();
+		try {
+			TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_USERNAME, User.class);
+			query.setParameter("username", username);
+			return query.getSingleResult();
+		} catch (NoResultException  e)
+		{
+			return null;
+		}
 	}
 
 	@Override
