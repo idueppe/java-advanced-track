@@ -1,5 +1,7 @@
 package com.lhsystems.usersadmin.doa;
 
+import java.util.List;
+
 import com.lhsystems.usersadmin.domain.User;
 
 public interface UserDao
@@ -12,5 +14,7 @@ public interface UserDao
 	public User find(Long userId);
 
 	public User findByUsername(String username);
-
+	
+	public List<User> findAll();
+	
 }

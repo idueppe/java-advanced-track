@@ -1,7 +1,10 @@
 package com.lhsystems.usersadmin.doa.spi;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -68,6 +71,13 @@ public class UserDaoBeanTest
 		em.getTransaction().begin();
 		user = dao.update(user);
 		em.getTransaction().commit();
+	}
+	
+	@Test
+	public void test_4_findAll()
+	{
+		List<User> users = dao.findAll();
+		assertFalse(users.isEmpty());
 	}
 
 }

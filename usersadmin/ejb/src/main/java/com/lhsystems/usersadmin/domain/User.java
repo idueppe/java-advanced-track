@@ -17,12 +17,15 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "tbl_user")
-@NamedQueries({ @NamedQuery(name = User.FIND_BY_USERNAME, query = "SELECT u FROM User u WHERE u.username = :username"),
-		@NamedQuery(name = User.FIND_BY_GROUPNAME, query = "SELECT u FROM Group g JOIN g.users u WHERE u.email like :emailpattern") })
+@NamedQueries({ 
+		@NamedQuery(name = User.FIND_BY_USERNAME, query = "SELECT u FROM User u WHERE u.username = :username"),
+		@NamedQuery(name = User.FIND_BY_GROUPNAME, query = "SELECT u FROM Group g JOIN g.users u WHERE u.email like :emailpattern"),
+		@NamedQuery(name = User.FIND_ALL, query = "SELECT u FROM User u")})
 public class User
 {
 	public static final String FIND_BY_USERNAME = "User.findByUsername";
 	public static final String FIND_BY_GROUPNAME = "User.findByGroupname";
+	public static final String FIND_ALL = "User.findAll";
 
 	@Id
 	@GeneratedValue

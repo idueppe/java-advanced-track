@@ -1,5 +1,7 @@
 package com.lhsystems.usersadmin.doa.spi;
 
+import java.util.List;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -41,6 +43,12 @@ public class UserDaoBean implements UserDao
 	public User update(User user)
 	{
 		return em.merge(user);
+	}
+
+	@Override
+	public List<User> findAll() {
+		TypedQuery<User> query = em.createNamedQuery(User.FIND_ALL, User.class);
+		return query.getResultList();
 	}
 
 }
