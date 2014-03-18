@@ -71,23 +71,6 @@
 				<version>4.11</version>
 				<scope>test</scope>
 			</dependency>
-
-			<!-- <dependency> -->
-			<!-- <groupId>org.jboss.bom</groupId> -->
-			<!-- <artifactId>jboss-javaee-6.0-with-tools</artifactId> -->
-			<!-- <version>${version.jboss.bom}</version> -->
-			<!-- <type>pom</type> -->
-			<!-- <scope>import</scope> -->
-			<!-- </dependency> -->
-
-			<!-- <dependency> -->
-			<!-- <groupId>org.jboss.bom</groupId> -->
-			<!-- <artifactId>jboss-javaee-6.0-with-hibernate</artifactId> -->
-			<!-- <version>${version.jboss.bom}</version> -->
-			<!-- <type>pom</type> -->
-			<!-- <scope>import</scope> -->
-			<!-- </dependency> -->
-
 		</dependencies>
 	</dependencyManagement>
 
@@ -95,9 +78,9 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.jboss.as.plugins</groupId>
-					<artifactId>jboss-as-maven-plugin</artifactId>
-					<version>${version.jboss.maven.plugin}</version>
+				    <groupId>org.wildfly.plugins</groupId>
+    				<artifactId>wildfly-maven-plugin</artifactId>
+    				<version>1.0.1.Final</version>
 					<inherited>true</inherited>
 					<configuration>
 						<skip>true</skip>
