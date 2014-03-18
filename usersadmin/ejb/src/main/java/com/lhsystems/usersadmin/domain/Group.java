@@ -1,16 +1,25 @@
 package com.lhsystems.usersadmin.domain;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
 @Table(name = "tbl_group")
+@NamedEntityGraphs(value=
+	@NamedEntityGraph(
+			name="groupWithUsers",
+			includeAllAttributes=true,
+			attributeNodes={@NamedAttributeNode("users"),@NamedAttributeNode("users")}))
 public class Group
 {
 
@@ -19,7 +28,7 @@ public class Group
 	private Long id;
 
 	@ManyToMany()
-	private List<User> users;
+	private List<User> users = new LinkedList<>();
 
 	@Version
 	private Long version;
