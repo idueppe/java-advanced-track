@@ -1,4 +1,4 @@
-package com.lhsystems.usersadmin.doa.spi;
+package com.lhsystems.usersadmin.dao.spi;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -19,6 +19,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.lhsystems.usersadmin.dao.spi.UserDaoBean;
 import com.lhsystems.usersadmin.domain.User;
 
 @RunWith(MockitoJUnitRunner.class)

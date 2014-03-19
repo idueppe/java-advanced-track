@@ -1,4 +1,4 @@
-package com.lhsystems.usersadmin.doa.spi;
+package com.lhsystems.usersadmin.dao.spi;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import com.lhsystems.usersadmin.doa.UserDao;
+import com.lhsystems.usersadmin.dao.UserDao;
 import com.lhsystems.usersadmin.domain.User;
 
 @Stateless

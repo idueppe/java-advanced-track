@@ -1,4 +1,4 @@
-package com.lhsystems.usersadmin.doa;
+package com.lhsystems.usersadmin.dao;
 
 import java.util.List;
 
