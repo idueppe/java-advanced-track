@@ -19,7 +19,8 @@ import javax.persistence.Version;
 	@NamedEntityGraph(
 			name="groupWithUsers",
 			includeAllAttributes=true,
-			attributeNodes={@NamedAttributeNode("users"),@NamedAttributeNode("users")}))
+			attributeNodes={@NamedAttributeNode("users")}
+			))
 public class Group
 {
 

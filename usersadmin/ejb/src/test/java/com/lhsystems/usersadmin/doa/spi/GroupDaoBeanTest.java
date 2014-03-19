@@ -66,6 +66,7 @@ public class GroupDaoBeanTest
 //		properties.put("javax.persistence.fetchgraph", groupWithUsersGrapth);
 		properties.put("javax.persistence.loadgraph", groupWithUsersGrapth);
 		Group loadGroup = em.find(Group.class, group.getId(), properties);
+//		Group loadGroup = em.find(Group.class, group.getId(), groupWithUsersGrapth);
 		
 		em.close();
 		User foundUser = loadGroup.getUsers().iterator().next();
