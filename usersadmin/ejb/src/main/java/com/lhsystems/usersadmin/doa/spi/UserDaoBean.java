@@ -17,7 +17,7 @@ import com.lhsystems.usersadmin.domain.User;
 public class UserDaoBean implements UserDao
 {
 
-	@PersistenceContext
+	@PersistenceContext(unitName="usersadmin")
 	private EntityManager em;
 
 	@Override

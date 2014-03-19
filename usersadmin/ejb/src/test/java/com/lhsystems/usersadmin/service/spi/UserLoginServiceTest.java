@@ -1,13 +1,9 @@
 package com.lhsystems.usersadmin.service.spi;
 
 import static org.junit.Assert.assertFalse;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
-
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +20,7 @@ public class UserLoginServiceTest
 {
 
 	@InjectMocks
-	private UserAdminServiceBean serviceBean;
+	private UserLoginServiceBean serviceBean;
 
 	@Mock
 	private UserDao userDao;
@@ -37,28 +33,19 @@ public class UserLoginServiceTest
 		user = new User();
 		user.setUsername("username");
 		user.setPassword("password");
-		when(userDao.findAll()).thenReturn(Arrays.asList(user));
+		when(userDao.findByUsername(anyString())).thenReturn(user);
 	}
 
 	@Test
-	public void testFindAll()
+	public void testAuthenticate_with_invalid_data()
 	{
-		List<User> users = serviceBean.listAllUsers();
-		assertFalse(users.isEmpty());
-	}
-	
-	@Test
-	public void testCreateUsers()
-	{
-		serviceBean.createUser(new User());
-		verify(userDao, times(1)).create(any(User.class));
+		assertFalse(serviceBean.authenticate("username", "invalid"));
 	}
 
-	
 	@Test
-	public void testUpdateUsers()
+	public void testAuthenticate_with_valid_data()
 	{
-		serviceBean.updateUser(new User());
-		verify(userDao, times(1)).update(any(User.class));
+		assertTrue(serviceBean.authenticate("username", "password"));
 	}
+
 }
