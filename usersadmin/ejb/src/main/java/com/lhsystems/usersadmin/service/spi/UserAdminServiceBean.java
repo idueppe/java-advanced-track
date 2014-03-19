@@ -12,6 +12,8 @@ import com.lhsystems.usersadmin.doa.UserDao;
 import com.lhsystems.usersadmin.domain.Role;
 import com.lhsystems.usersadmin.domain.User;
 import com.lhsystems.usersadmin.service.UserAdminService;
+import com.lhsystems.usersadmin.service.UserAlreadyExistsException;
+import com.lhsystems.usersadmin.service.UserNotFoundException;
 
 @Named
 @Stateless
@@ -19,8 +21,6 @@ import com.lhsystems.usersadmin.service.UserAdminService;
 public class UserAdminServiceBean implements UserAdminService {
 
 	@Inject
-	// CDI Annotation
-	// @EJB // EJB Annotation
 	private UserDao userDao;
 
 	@Override
@@ -44,7 +44,7 @@ public class UserAdminServiceBean implements UserAdminService {
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public void updateUser(User user) throws UserNotFoundException {
 		userDao.update(user);
 	}
 
