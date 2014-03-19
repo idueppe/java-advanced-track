@@ -19,7 +19,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.lhsystems.usersadmin.doa.UserDao;
+import com.lhsystems.usersadmin.dao.UserDao;
 import com.lhsystems.usersadmin.domain.Role;
 import com.lhsystems.usersadmin.domain.User;
 import com.lhsystems.usersadmin.service.UserAlreadyExistsException;
@@ -55,6 +55,7 @@ public class UserAdminServiceTest
 		when(userDao.findAll()).thenReturn(Arrays.asList(user, admin));
 		List<User> users = serviceBean.listAllUsers();
 		assertEquals(1, users.size());
+		assertEquals(user, users.get(0));
 		assertTrue(users.get(0).getRole() == Role.USER);
 	}
 

@@ -8,7 +8,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.lhsystems.usersadmin.doa.UserDao;
+import com.lhsystems.usersadmin.dao.UserDao;
 import com.lhsystems.usersadmin.domain.Role;
 import com.lhsystems.usersadmin.domain.User;
 import com.lhsystems.usersadmin.service.UserAdminService;
@@ -26,9 +26,8 @@ public class UserAdminServiceBean implements UserAdminService {
 	@Override
 	public List<User> listAllUsers() {
 
-		List<User> users = userDao.findAll();
 		List<User> result = new LinkedList<>();
-		for (User user : users)
+		for (User user : userDao.findAll())
 			if (user.getRole() == Role.USER)
 				result.add(user);
 		return result;

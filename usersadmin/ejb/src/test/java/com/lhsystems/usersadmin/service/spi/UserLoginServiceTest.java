@@ -12,7 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.lhsystems.usersadmin.doa.UserDao;
+import com.lhsystems.usersadmin.dao.UserDao;
 import com.lhsystems.usersadmin.domain.User;
 
 @RunWith(MockitoJUnitRunner.class)

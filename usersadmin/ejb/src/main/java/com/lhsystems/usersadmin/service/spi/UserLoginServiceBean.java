@@ -1,6 +1,6 @@
 package com.lhsystems.usersadmin.service.spi;
 
-import com.lhsystems.usersadmin.doa.UserDao;
+import com.lhsystems.usersadmin.dao.UserDao;
 import com.lhsystems.usersadmin.domain.User;
 import com.lhsystems.usersadmin.service.UserLoginService;
 
