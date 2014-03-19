@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -86,7 +87,7 @@ public class UsersAdminView implements Serializable {
 			selectedUser = new User();
 			return "done";
 		} catch (UserAlreadyExistsException e) {
-			FacesMessage message = new FacesMessage(e.getMessage(), e.getMessage());
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, message);
 			return "";
 		}
