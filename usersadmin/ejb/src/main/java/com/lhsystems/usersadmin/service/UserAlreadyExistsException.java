@@ -1,6 +1,8 @@
-package com.lhsystems.usersadmin.service.spi;
+package com.lhsystems.usersadmin.service;
 
-public class UserAlreadyExistsException extends Exception {
+import com.lhsystems.framework.exceptions.ApplicationException;
+
+public class UserAlreadyExistsException extends ApplicationException {
 
 	private static final long serialVersionUID = 1L;
 
