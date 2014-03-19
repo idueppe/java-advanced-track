@@ -11,6 +11,8 @@
       <class>com.lhsystems.usersadmin.domain.Group</class>
       <class>com.lhsystems.usersadmin.domain.User</class>
       <class>com.lhsystems.usersadmin.domain.Role</class>
+      <class>com.lhsystems.usersadmin.dao.spi.RoleAttributeConverter</class>
+      
       <properties>
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          <property name="hibernate.show_sql" value="true" />

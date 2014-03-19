@@ -4,8 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -21,38 +19,9 @@ import javax.persistence.Version;
 		@NamedQuery(name = User.FIND_BY_USERNAME, query = "SELECT u FROM User u WHERE u.username = :username"),
 		@NamedQuery(name = User.FIND_BY_GROUPNAME, query = "SELECT u FROM Group g JOIN g.users u WHERE u.email like :emailpattern"),
 		@NamedQuery(name = User.FIND_ALL, query = "SELECT u FROM User u")})
+
 public class User
 {
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((version == null) ? 0 : version.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (version == null) {
-			if (other.version != null)
-				return false;
-		} else if (!version.equals(other.version))
-			return false;
-		return true;
-	}
 
 	public static final String FIND_BY_USERNAME = "User.findByUsername";
 	public static final String FIND_BY_GROUPNAME = "User.findByGroupname";
@@ -69,7 +38,8 @@ public class User
 	@Column(unique = true)
 	private String email;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
+//	@Convert(converter=RoleAttributeConverter.class)
 	private Role role = Role.USER;
 
 	@Column(nullable = false)
@@ -104,19 +74,14 @@ public class User
 		this.username = username;
 	}
 
-	public String getPassword()
-	{
-		return password;
-	}
-
 	public void setPassword(String password)
 	{
 		this.password = password;
 	}
 
-	public String getEmail()
+	public String getPassword()
 	{
-		return email;
+		return password;
 	}
 
 	public void setEmail(String email)
@@ -124,14 +89,19 @@ public class User
 		this.email = email;
 	}
 
-	public Role getRole()
+	public String getEmail()
 	{
-		return role;
+		return email;
 	}
 
 	public void setRole(Role role)
 	{
 		this.role = role;
+	}
+
+	public Role getRole()
+	{
+		return role;
 	}
 
 	public boolean isActive()
@@ -162,6 +132,37 @@ public class User
 	public void setLastLogin(Date lastLogin)
 	{
 		this.lastLogin = lastLogin;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (version == null) {
+			if (other.version != null)
+				return false;
+		} else if (!version.equals(other.version))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((version == null) ? 0 : version.hashCode());
+		return result;
 	}
 
 }

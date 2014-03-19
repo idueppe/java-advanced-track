@@ -4,7 +4,9 @@
 	version="2.0">
 	<persistence-unit name="test-usersadmin" transaction-type="RESOURCE_LOCAL">
 	    <class>com.lhsystems.usersadmin.domain.User</class>
+	    <class>com.lhsystems.usersadmin.domain.Role</class>
 	    <class>com.lhsystems.usersadmin.domain.Group</class>
+	    <class>com.lhsystems.usersadmin.dao.spi.RoleAttributeConverter</class>
 	    
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
