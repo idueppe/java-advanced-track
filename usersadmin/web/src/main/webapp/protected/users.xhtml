@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/WEB-INF/templates/bootstrap.xhtml">
+
+    <ui:define name="navigation">
+        <h:form>
+            <ul class="nav nav-pills pull-right">
+                <li><h:commandLink action="/index">Start</h:commandLink></li>
+                <li class="active"><h:commandLink action="/protected/users?nocid=true" >Nutzer</h:commandLink></li>
+            </ul>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="main">
+        <h1>Nutzer</h1>
+        <h:messages infoClass="info" errorClass="error" warnClass="warning" showSummary="true" showDetail="false" />
+        <h:form>
+            <h:dataTable id="usertable" styleClass="table table-striped" value="#{usersAdminView.users}" var="user">
+                <h:column>
+                    <f:facet name="header">Username</f:facet>
+                    #{user.username}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    #{user.email}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Rolle</f:facet>
+                    #{user.role}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Login</f:facet>
+                    #{user.lastLogin}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandButton value="Edit..." action="#{usersAdminView.editUser(user)}" styleClass="btn btn-primary"/>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="Neuer Nutzer" action="#{usersAdminView.createNewUser()}" styleClass="btn btn-primary"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

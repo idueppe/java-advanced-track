@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:rich="http://richfaces.org/rich"
+                template="/WEB-INF/templates/bootstrap.xhtml">
+
+    <ui:define name="navigation">
+        <h:form>
+            <ul class="nav nav-pills pull-right">
+                <li><h:commandLink action="/index">Start</h:commandLink></li>
+                <li><h:commandLink action="/protected/users?nocid=true">Nutzer</h:commandLink></li>
+            </ul>
+        </h:form>
+    </ui:define>
+
+
+    <ui:define name="main">
+        <h1>Neuer Nutzer</h1>
+        <div class="row-fluid">
+            <h:form>
+                <h:panelGrid columns="1">
+                    <p>
+                    	<h:outputLabel value="Username" for="username"/>
+                    	<h:inputText id="username" value="#{usersAdminView.selectedUser.username}" />
+                    	<h:message for="username" showDetails="true" errorClass="text_error"/>
+
+                    	<h:outputLabel value="Email" for="email"/>
+                    	<h:inputText id="email" value="#{usersAdminView.selectedUser.email}" />
+                    	<h:message for="email" showDetails="true" errorClass="text_error"/>
+                    	
+                    	<h:outputLabel value="Password" for="password"/>
+                    	<h:inputSecret id="password" value="#{usersAdminView.selectedUser.password}" />
+                    	<h:message for="password" showDetails="true" errorClass="text_error"/>
+                    	
+                    	<h:outputLabel for="role" value="Rolle"/>
+    					<h:selectOneMenu id="role" value="#{usersAdminView.selectedUser.role}">
+		    				<f:selectItem itemLabel="Kunde" itemValue="USER"/>
+		    				<f:selectItem itemLabel="Administrator" itemValue="ADMIN"/>
+    					</h:selectOneMenu>
+                    	
+	                </p>
+                    <h:panelGrid columns="2">
+                        <h:commandLink action="#{usersAdminView.create()}" rendered="#{!usersAdminView.editingUser}" styleClass="btn btn-primary">Nutzer anlegen</h:commandLink>
+                        <h:commandLink action="#{usersAdminView.save()}" rendered="#{usersAdminView.editingUser}" styleClass="btn btn-primary">Änderungen speichern</h:commandLink>
+                        <h:commandLink action="#{usersAdminView.cancel()}" styleClass="btn btn-danger" immediate="true">Abbrechen</h:commandLink>
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
