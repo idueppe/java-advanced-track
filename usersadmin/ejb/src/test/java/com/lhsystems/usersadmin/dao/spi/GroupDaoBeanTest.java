@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -19,7 +20,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.lhsystems.usersadmin.dao.spi.UserDaoBean;
 import com.lhsystems.usersadmin.domain.Group;
 import com.lhsystems.usersadmin.domain.User;
 
@@ -37,9 +37,10 @@ public class GroupDaoBeanTest
 
 	@InjectMocks
 	private UserDaoBean dao;
+	
 
 	@AfterClass
-	public static void tearDown()
+	public static void tearDownClass()
 	{
 		emf.close();
 	}
