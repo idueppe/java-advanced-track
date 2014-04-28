@@ -21,7 +21,6 @@
 		<web-resource-collection>
 			<web-resource-name>ProtectedPages</web-resource-name>
 			<url-pattern>/protected/*</url-pattern>
-			<url-pattern>/secure/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<description></description>
@@ -37,4 +36,8 @@
 	<security-role>
 		<role-name>ADMIN</role-name>
 	</security-role>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsf</welcome-file>
+	</welcome-file-list>
 </web-app>
