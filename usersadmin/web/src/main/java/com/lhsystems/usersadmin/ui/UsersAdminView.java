@@ -7,12 +7,10 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.lhsystems.usersadmin.domain.Role;
 import com.lhsystems.usersadmin.domain.User;
 import com.lhsystems.usersadmin.service.UserAdminService;
 import com.lhsystems.usersadmin.service.UserAlreadyExistsException;
