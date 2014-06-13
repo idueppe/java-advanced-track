@@ -140,4 +140,14 @@ public class User {
 		this.address = address;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", version=" + version + ", username="
+				+ username + ", password=" + password + ", fullname="
+				+ fullname + ", email=" + email + ", address=" + address
+				+ ", active=" + active + ", lastPasswordChanged="
+				+ lastPasswordChanged + ", lastLogin=" + lastLogin + ", role="
+				+ role + "]";
+	}
+
 }
