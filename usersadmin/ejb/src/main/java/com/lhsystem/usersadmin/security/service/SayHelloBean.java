@@ -12,7 +12,7 @@ public class SayHelloBean implements SayHelloService, SayHelloServiceRemote {
 
 	@Override
 	public String say(String name) {
-		return "Hello" + name;
+		return "Hello " + name;
 	}
 
 }
