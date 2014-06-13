@@ -16,6 +16,35 @@
 			<url>http://creativecommons.org/licenses/by-sa/3.0/</url>
 		</license>
 	</licenses>
+	
+	<repositories>
+		<repository>
+			<id>nexus.local</id>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<url>http://localhost:8081/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+
+	
+	<distributionManagement>
+		<repository>
+			<id>nexus.local</id>
+			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus.local</id>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+	<scm>
+		<developerConnection>scm:git:file:///repository/java-advanced-track.git</developerConnection>
+	</scm>
 
 	<modules>
 		<module>ejb</module>
@@ -35,16 +64,6 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>1.7</maven.compiler.source>
 	</properties>
-	
-	<repositories>
-		<repository>
-			<id>nexus.local</id>
-			<url>http://localhost:8081/nexus/content/groups/public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
 	<dependencyManagement>
 		<dependencies>
