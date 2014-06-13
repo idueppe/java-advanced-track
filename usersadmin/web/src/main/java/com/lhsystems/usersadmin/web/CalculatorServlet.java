@@ -1,4 +1,4 @@
-package com.lhsystems.usersdomain.web;
+package com.lhsystems.usersadmin.web;
 
 import java.io.IOException;
 
