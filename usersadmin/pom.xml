@@ -40,6 +40,10 @@
 			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
+	
+	<scm>
+		<developerConnection>scm:git:file:///repository/java-advanced-track</developerConnection>
+	</scm>
 
 	
 	<distributionManagement>
