@@ -121,6 +121,29 @@
 						<skip>true</skip>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5</version>
+					<executions>
+						<execution>
+							<id>default</id>
+							<goals>
+								<goal>perform</goal>
+							</goals>
+							<configuration>
+								<pomFileName>usersadmin/pom.xml</pomFileName>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<dependency>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-scm-plugin</artifactId>
+						<version>1.9</version>
+					</dependency>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -135,22 +158,6 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.2.1</version>
-				<executions>
-					<execution>
-						<id>default</id>
-						<goals>
-							<goal>perform</goal>
-						</goals>
-						<configuration>
-							<pomFileName>usersadmin/pom.xml</pomFileName>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
