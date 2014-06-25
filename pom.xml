@@ -30,7 +30,7 @@
 	</distributionManagement>
 	
 	<scm>
-		<developerConnection>scm:git:[push=]file:///repository/java-advanced-track.git[fetch=]git@github.com:idueppe/java-advanced-track.git</developerConnection>
+		<developerConnection>scm:git:file:///repository/java-advanced-track.git</developerConnection>
 	</scm>
 
 	<modules>
