@@ -30,7 +30,6 @@
 		</repository>
 	</repositories>
 
-	
 	<distributionManagement>
 		<repository>
 			<id>nexus.local</id>
@@ -41,14 +40,10 @@
 			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
-	<scm>
-		<developerConnection>scm:git:file:///repository/java-advanced-track.git</developerConnection>
-	</scm>
 
 	<modules>
-		<module>ejb</module>
 		<module>web</module>
+		<module>ejb</module>
 		<module>ear</module>
 	</modules>
 
