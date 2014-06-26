@@ -2,26 +2,32 @@ package com.lhsystems.usersadmin.doa;
 
 import java.util.List;
 
+import javax.ejb.Local;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import com.lhsystems.usersadmin.domain.Role;
 import com.lhsystems.usersadmin.domain.User;
 
+@Stateless
+@Local(UserDao.class)
 public class UserDaoBean implements UserDao {
 
-	@PersistenceContext
-	private EntityManager entityManager;
+	@PersistenceContext()
+	private EntityManager em;
 	
 	@Override
 	public void createUser(User user) {
-		// TODO Auto-generated method stub
+		em.persist(user);
 	}
 
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String qlString = "SELECT u FROM User u";
+		TypedQuery<User> query = em.createQuery(qlString, User.class);
+		return query.getResultList();
 	}
 
 	@Override

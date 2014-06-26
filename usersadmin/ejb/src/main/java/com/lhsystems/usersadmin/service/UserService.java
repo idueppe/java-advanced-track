@@ -8,7 +8,7 @@ public interface UserService {
 	
 	public void addUser(UserDto userDto);
 	
-	public List<UserDto> findByRole(String rolle);
+	public List<UserDto> findByRole(String role);
 	
 	public List<UserDto> findAll();
 

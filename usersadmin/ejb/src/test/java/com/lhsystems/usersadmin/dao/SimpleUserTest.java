@@ -35,7 +35,7 @@ public class SimpleUserTest {
 		
 		User user = new User();
 		user.setActive(true);
-		user.setFullname("Ingo Düppe");
+		user.setEmail("Ingo Düppe");
 		user.setRole(Role.ADMIN);
 		user.setPassword("masterkey");
 

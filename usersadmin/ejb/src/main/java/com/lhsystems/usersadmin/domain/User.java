@@ -21,7 +21,7 @@ public class User {
 
 	@Column(unique=true)
 	private String username;
-	private String fullname;
+	private String email;
 	private String password;
     
 	private boolean active;
@@ -60,12 +60,12 @@ public class User {
 		this.username = username;
 	}
 
-	public String getFullname() {
-		return fullname;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setEmail(String fullname) {
+		this.email = fullname;
 	}
 
 	public String getPassword() {
