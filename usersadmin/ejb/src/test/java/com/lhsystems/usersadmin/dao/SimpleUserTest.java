@@ -27,6 +27,7 @@ public class SimpleUserTest {
 
 	@Test
 	public void test_1_CreateAndPersistUser() {
+	
 		
 		EntityManager em = emf.createEntityManager();
 		
