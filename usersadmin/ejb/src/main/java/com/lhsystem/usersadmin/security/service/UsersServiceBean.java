@@ -31,9 +31,11 @@ public class UsersServiceBean implements UsersService {
 		user.setEmail(userDto.getEmail());
 		user.setRole(Role.valueOf(userDto.getRoleName().toUpperCase()));
 		user.setUsername(userDto.getUsername());
-		
 		user.setPassword(UUID.randomUUID().toString());
+		
 		userDao.createUser(user);
+		
+		// TODO send user password per mail 
 	}
 	
 	
