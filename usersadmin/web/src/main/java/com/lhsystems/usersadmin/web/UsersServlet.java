@@ -27,13 +27,33 @@ public class UsersServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		PrintWriter out = resp.getWriter();
+		printHtml(out);
+	}
 
-		// TODO call print... methods 
-	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
+		String username = req.getParameter("username");
+		String email = req.getParameter("email");
+		String roleName = req.getParameter("role");
+		
+		UserDto userDto = new UserDto()
+			.withEmail(email)
+			.withUsername(username)
+			.withRoleName(roleName);
+		
+		usersService.createUser(userDto);
+		printHtml(resp.getWriter());
+	}
+
+	private void printHtml(PrintWriter out) {
+		printHtmlHeader(out);
+		printUsersListe(out, usersService.listUsers());
+		printAddUserForm(out);
+		printHtmlFooter(out);
 	}
 	
-	
-
 	private void printHtmlHeader(PrintWriter out) {
 		out.println("<html><body>");
 	}
@@ -44,7 +64,7 @@ public class UsersServlet extends HttpServlet {
 		out.println("<ul>");
 		for (UserDto user : users) {
 			out.println("<li>");
-			out.println(user.toString());
+			out.println(user.getUsername()+" "+user.getEmail()+" "+user.getRoleName());
 			out.println("</li>");
 		}
 		out.println("</ul>");

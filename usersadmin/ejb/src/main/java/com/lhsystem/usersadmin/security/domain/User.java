@@ -30,6 +30,7 @@ public class User {
 
 	@Column(name="uname", nullable=false, unique=true)
 	private String username;
+	
 	@Column(nullable=false)
 	private String password;
 	private String fullname;
