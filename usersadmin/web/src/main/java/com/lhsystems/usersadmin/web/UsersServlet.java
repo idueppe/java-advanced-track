@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lhsystem.usersadmin.security.domain.User;
+import com.lhsystem.usersadmin.security.dto.UserDto;
 import com.lhsystem.usersadmin.security.service.UsersService;
 
 @WebServlet("/users")
@@ -30,7 +30,7 @@ public class UsersServlet extends HttpServlet {
 		out.println("<html><body><h1>Users</h1>");
 		out.println("<ul>");
 
-		for (User user : usersService.listAllUsers()) {
+		for (UserDto user : usersService.listUsers()) {
 			out.println("<li>");
 			out.println(user.toString());
 			out.println("</li>");

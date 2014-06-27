@@ -1,6 +1,7 @@
 package com.lhsystems.usersadmin.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -23,12 +24,14 @@ public class SayHelloServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		resp.getOutputStream().println("Hello World!");
+		PrintWriter out = resp.getWriter();
+		
+		out.println("Hello World!");
 		String name = req.getParameter("name");
-		resp.getOutputStream().println(sayHelloService.say(name));
+		out.println(sayHelloService.say(name));
 		
 	}
 	
-	
+		
 
 }

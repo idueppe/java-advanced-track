@@ -43,7 +43,7 @@ public class AddUserServlet extends HttpServlet{
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
-		usersService.addUser(username, password);
+//		usersService.addUser(username, password);
 
 	}
 

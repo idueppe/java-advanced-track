@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import com.lhsystem.usersadmin.security.dao.UserDao;
-import com.lhsystem.usersadmin.security.domain.User;
+import com.lhsystem.usersadmin.security.dto.UserDto;
 
 @Stateless
 public class UsersServiceBean implements UsersService {
@@ -15,22 +15,16 @@ public class UsersServiceBean implements UsersService {
 	private UserDao userDao;
 	
 	@Override
-	public List<User> listAllUsers()
-	{
-//		return new UserDaoBean().findAll(); <-- doesn't work!!!!
-		return userDao.findAll();
+	public List<UserDto> listUsers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	// Transaktion begin
-	
 	@Override
-	public void addUser(String username, String password) {
-		User user = new User();
-		user.setUsername(username);
-		user.setPassword(password);
-		userDao.createUser(user);
+	public void createUser(UserDto userDto) {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	// Transaction commit
 	
 }

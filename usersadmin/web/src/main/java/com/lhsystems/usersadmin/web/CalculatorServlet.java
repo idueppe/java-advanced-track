@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.lhsystem.usersadmin.security.service.Calculator;
+import com.lhsystem.usersadmin.security.service.CalculatorBean;
 
 @WebServlet("/calc")
 public class CalculatorServlet extends HttpServlet {
@@ -35,12 +36,18 @@ public class CalculatorServlet extends HttpServlet {
 
 	private Calculator getCalculator(HttpServletRequest req) {
 		HttpSession session = req.getSession(true);
+		// fetch calculator bean from web session
 		Calculator calculator = (Calculator) session.getAttribute(CALCULATOR_SESSION_KEY);
+			
 		if (calculator == null)
 		{
+			// no calculator found
 			try {
+				
 				InitialContext context = new InitialContext();
 				calculator = (Calculator) context.lookup("java:app/usersadmin-ejb/CalculatorBean!com.lhsystem.usersadmin.security.service.Calculator");
+				
+				// put calculator reference into web session
 				session.setAttribute(CALCULATOR_SESSION_KEY, calculator);
 			} catch (NamingException e) {
 				e.printStackTrace();
