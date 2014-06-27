@@ -5,12 +5,14 @@ import java.util.UUID;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 
 import com.lhsystem.usersadmin.security.dao.UserDao;
 import com.lhsystem.usersadmin.security.domain.Role;
 import com.lhsystem.usersadmin.security.domain.User;
 import com.lhsystem.usersadmin.security.dto.UserDto;
 
+@Named
 @Stateless
 public class UsersServiceBean implements UsersService {
 

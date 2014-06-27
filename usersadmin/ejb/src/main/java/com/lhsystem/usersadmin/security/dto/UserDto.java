@@ -1,5 +1,12 @@
 package com.lhsystem.usersadmin.security.dto;
 
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Model;
+import javax.inject.Named;
+
+@Named()
+@RequestScoped
 public class UserDto {
 
 	private String username;
