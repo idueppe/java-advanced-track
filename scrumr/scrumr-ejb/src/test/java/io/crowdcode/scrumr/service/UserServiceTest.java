@@ -1,4 +1,4 @@
-package io.crowdcode.scrumr.services;
+package io.crowdcode.scrumr.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
