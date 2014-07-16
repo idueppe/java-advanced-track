@@ -1,7 +1,6 @@
 package io.crowdcode.scrumr.test;
 
 import io.crowdcode.scrumr.model.Identifiable;
-import io.crowdcode.scrumr.service.UserServiceTest.InjectIdAnswer;
 
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
