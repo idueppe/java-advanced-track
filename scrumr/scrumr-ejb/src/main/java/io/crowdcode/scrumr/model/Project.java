@@ -1,23 +1,21 @@
 package io.crowdcode.scrumr.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Project {
+public class Project implements Identifiable {
 
 	@Id
-	@GeneratedValue
-	private Long id;
+	private String id;
 
 	private String title;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -39,6 +37,4 @@ public class Project {
 		return "Project [id=" + id + ", title=" + title + "]";
 	}
 	
-	
-
 }
