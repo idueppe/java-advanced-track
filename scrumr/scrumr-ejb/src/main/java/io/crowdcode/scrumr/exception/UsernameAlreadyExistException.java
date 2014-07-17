@@ -1,6 +1,5 @@
-package io.crowdcode.scrumr.service;
+package io.crowdcode.scrumr.exception;
 
-import io.crowdcode.scrumr.exception.ApplicationException;
 
 public class UsernameAlreadyExistException extends ApplicationException
 {
