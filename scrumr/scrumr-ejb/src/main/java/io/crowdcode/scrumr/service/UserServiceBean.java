@@ -1,7 +1,10 @@
 package io.crowdcode.scrumr.service;
 
 import io.crowdcode.scrumr.dao.UserDao;
+import io.crowdcode.scrumr.exception.EmailAlreadyExistException;
+import io.crowdcode.scrumr.exception.InvalidEmailException;
 import io.crowdcode.scrumr.exception.InvalidUsernameException;
+import io.crowdcode.scrumr.exception.UsernameAlreadyExistException;
 import io.crowdcode.scrumr.model.User;
 
 import java.util.ArrayList;
@@ -26,7 +29,6 @@ public class UserServiceBean
 	{
 		if (StringUtils.isBlank(username))
 			throw new InvalidUsernameException(username);
-		
 		if (StringUtils.isBlank(email))
 			throw new InvalidEmailException(email);
 

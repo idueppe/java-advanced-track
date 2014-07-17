@@ -15,7 +15,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import io.crowdcode.scrumr.dao.UserDao;
+import io.crowdcode.scrumr.exception.EmailAlreadyExistException;
+import io.crowdcode.scrumr.exception.InvalidEmailException;
 import io.crowdcode.scrumr.exception.InvalidUsernameException;
+import io.crowdcode.scrumr.exception.UsernameAlreadyExistException;
 import io.crowdcode.scrumr.model.User;
 
 import java.util.Arrays;
@@ -66,6 +69,7 @@ public class UserServiceTest
 
 		userService.registerUser(username, email);
 
+		// this is not a left indent test!!!!
 		verify(userDao, times(1)).persist(argThat(new ArgumentMatcher<User>()
 		{
 
@@ -89,6 +93,10 @@ public class UserServiceTest
 
 		verify(userDao).persist(userCaptor.capture());
 		
+		assertThat(userCaptor.getValue().getEmail(), is(email));
+		assertThat(userCaptor.getValue().getUsername(), is(username));
+		
+		// or this way
 		assertThat(userCaptor.getValue(), hasProperty("username", equalTo(username)));
 		assertThat(userCaptor.getValue(), hasProperty("email", equalTo(email)));
 	}
@@ -130,7 +138,9 @@ public class UserServiceTest
 	public void testUsernameContainsToUsernames()
 	{
 		// arrange
-		List<User> userList = Arrays.asList(new User().withUsername("username1"), new User().withUsername("username2"));
+		List<User> userList = Arrays.asList( //
+				new User().withUsername("username1"), // 
+				new User().withUsername("username2")); //
 		when(userDao.findAll()).thenReturn(userList);
 		// act
 		List<String> usernames = userService.getUsernames();
