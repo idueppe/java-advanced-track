@@ -1,23 +1,11 @@
 package io.crowdcode.scrumr.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
-public class Project implements Identifiable {
-
-	@Id
-	private String id;
+public class Project extends AbstractEntity {
 
 	private String title;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getTitle() {
 		return title;
@@ -34,7 +22,7 @@ public class Project implements Identifiable {
 
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", title=" + title + "]";
+		return "Project [id=" + getId() + ", title=" + title + "]";
 	}
 	
 }

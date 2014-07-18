@@ -1,7 +1,6 @@
 package io.crowdcode.scrumr.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -14,19 +13,17 @@ import javax.persistence.Table;
 	@NamedQuery(name=User.FIND_ALL, query="SELECT u FROM User u")
 	
 })
-public class User implements Identifiable
+public class User extends AbstractEntity implements Identifiable
 {
 	public static final String FIND_BY_EMAIL = "User.findByEmail";
 	public static final String FIND_ADMINS = "User.findAdmins";
 	public static final String FIND_ALL = "User.findAll";
 	
-	@Id
-	private String id;
 	private String email;
 	private String password;
 	private String fullname;
 	private boolean admin;
-
+	
 	public String getEmail()
 	{
 		return email;
@@ -41,16 +38,6 @@ public class User implements Identifiable
 	{
 		setEmail(email);
 		return this;
-	}
-
-	public String getId()
-	{
-		return id;
-	}
-
-	public void setId(String id)
-	{
-		this.id = id;
 	}
 
 	public String getPassword()
