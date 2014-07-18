@@ -5,10 +5,12 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import io.crowdcode.scrumr.model.AbstractEntity;
 import io.crowdcode.scrumr.model.User;
 
 import java.util.List;
@@ -81,9 +83,15 @@ public class UserDaoBeanIT
 		assertThat(users, is(notNullValue()));
 	} 
 	
+	@Test
+	public void test_4_FindByUnknownEmail() throws Exception
+	{
+		User user = userDao.findUserByEmail("unknown_email");
+		assertThat(user, is(nullValue()));
+	}
 	
 	@Test
-	public void test_4_RemoveUser() throws Exception
+	public void test_5_RemoveUser() throws Exception
 	{
 		User user = userDao.findUserByEmail(email);
 		userDao.remove(user);

@@ -1,5 +1,6 @@
 package io.crowdcode.scrumr.dao;
 
+import io.crowdcode.scrumr.model.AbstractEntity;
 import io.crowdcode.scrumr.model.User;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.UUID;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -16,7 +18,7 @@ public class UserDaoBean implements UserDao
 
 	@PersistenceContext()
 	private EntityManager em;
-	
+
 	@Override
 	public void persist(User user)
 	{
@@ -27,9 +29,15 @@ public class UserDaoBean implements UserDao
 	@Override
 	public User findUserByEmail(String email)
 	{
-		TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_EMAIL, User.class);
-		query.setParameter("email", email);
-		return query.getSingleResult();
+		try
+		{
+			TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_EMAIL, User.class);
+			query.setParameter("email", email);
+			return query.getSingleResult();
+		} catch (NoResultException nre)
+		{
+			return null;
+		}
 	}
 
 	@Override
