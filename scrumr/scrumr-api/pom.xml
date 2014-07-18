@@ -12,9 +12,7 @@
 
 	<name>scrumr</name>
 
-	<groupId>io.crowdcode</groupId>
 	<artifactId>scrumr-api</artifactId>
-	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<url>http://crowdcode.io</url>
