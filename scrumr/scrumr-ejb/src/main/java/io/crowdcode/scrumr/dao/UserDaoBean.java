@@ -8,6 +8,7 @@ import java.util.UUID;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class UserDaoBean implements UserDao
@@ -26,29 +27,29 @@ public class UserDaoBean implements UserDao
 	@Override
 	public User findUserByEmail(String email)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_EMAIL, User.class);
+		query.setParameter("email", email);
+		return query.getSingleResult();
 	}
 
 	@Override
 	public List<User> findAdmins()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<User> query = em.createNamedQuery(User.FIND_ADMINS, User.class);
+		return query.getResultList();
 	}
 
 	@Override
-	public void remove(User admin)
+	public void remove(User user)
 	{
-		// TODO Auto-generated method stub
-		
+		em.remove(user);
 	}
 
 	@Override
 	public List<User> findAllUsers()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<User> query = em.createNamedQuery(User.FIND_ALL, User.class);
+		return query.getResultList();
 	}
 
 }
