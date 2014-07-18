@@ -2,10 +2,24 @@ package io.crowdcode.scrumr.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="tbl_user")
+@NamedQueries({
+	@NamedQuery(name=User.FIND_BY_EMAIL, query="SELECT u FROM User u WHERE u.email = :email"),
+	@NamedQuery(name=User.FIND_ADMINS, query="SELECT u FROM User u WHERE u.admin = true"),
+	@NamedQuery(name=User.FIND_ALL, query="SELECT u FROM User u")
+	
+})
 public class User implements Identifiable
 {
+	public static final String FIND_BY_EMAIL = "User.findByEmail";
+	public static final String FIND_ADMINS = "User.findAdmins";
+	public static final String FIND_ALL = "User.findAll";
+	
 	@Id
 	private String id;
 	private String email;
