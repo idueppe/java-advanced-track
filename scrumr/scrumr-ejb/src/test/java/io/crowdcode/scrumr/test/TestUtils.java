@@ -8,7 +8,7 @@ import org.mockito.stubbing.Answer;
 public class TestUtils
 {
 	
-	public static InjectIdAnswer with(String expectedId)
+	public static InjectIdAnswer withId(String expectedId)
 	{
 		return new InjectIdAnswer(expectedId);
 	}
