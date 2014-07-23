@@ -1,19 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
-	<persistence-unit name="scrumer" transaction-type="JTA">
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<jta-data-source>jdbc/ScrumerDS</jta-data-source>
-		<class>io.crowdcode.ejb.model.Project</class>
-
-		<properties>
-			<!-- EclipseLink should create the database schema automatically -->
-			<property name="eclipselink.ddl-generation" value="create-tables" />
-			<property name="eclipselink.ddl-generation.output-mode"	value="database" />
-			<property name="eclipselink.logging.level.sql" value="FINEST"/>
-			<property name="eclipselink.logging.parameters" value="true"/>
-			<property name="eclipselink.logging.level" value="FINEST"/>
-		</properties>
-	</persistence-unit>
-</persistence> 
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+   xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+        
+   <persistence-unit name="usersadmin" transaction-type="JTA">
+      <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+      <jta-data-source>java:jboss/datasources/scrumrDS</jta-data-source>
+      
+      <properties>
+         <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+         <property name="hibernate.show_sql" value="true" />
+      </properties>
+   </persistence-unit>
+</persistence>
