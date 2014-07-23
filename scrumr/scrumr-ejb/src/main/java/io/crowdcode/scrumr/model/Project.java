@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name=Project.FIND_ALL, query="SELECT u FROM User u")
+	@NamedQuery(name=Project.FIND_ALL, query="SELECT p FROM Project p")
 })
 public class Project extends AbstractEntity {
 	
@@ -70,6 +70,12 @@ public class Project extends AbstractEntity {
 	{
 		this.productOwner = productOwner;
 	}
+	
+	public Project withProductOwner(User productOwner)
+	{
+		setProductOwner(productOwner);
+		return this;
+	}
 
 	public User getScrumMaster()
 	{
@@ -80,6 +86,12 @@ public class Project extends AbstractEntity {
 	{
 		this.scrumMaster = scrumMaster;
 	}
+	
+	public Project withScrumMaster(User scrumMaster)
+	{
+		setScrumMaster(scrumMaster);
+		return this;
+	}
 
 	public List<User> getDevelopers()
 	{
@@ -89,6 +101,12 @@ public class Project extends AbstractEntity {
 	public void setDevelopers(List<User> developers)
 	{
 		this.developers = developers;
+	}
+	
+	public Project addDeveloper(User developer) 
+	{
+		getDevelopers().add(developer);
+		return this;
 	}
 
 	@Override
