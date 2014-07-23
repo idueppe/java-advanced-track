@@ -10,7 +10,6 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import io.crowdcode.scrumr.model.AbstractEntity;
 import io.crowdcode.scrumr.model.User;
 
 import java.util.List;
