@@ -1,6 +1,5 @@
 package io.crowdcode.scrumr.dao;
 
-import io.crowdcode.scrumr.model.AbstractEntity;
 import io.crowdcode.scrumr.model.User;
 
 import java.util.List;
