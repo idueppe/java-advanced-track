@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+@Named
 @Stateless
 public class UserDaoBean implements UserDao
 {
