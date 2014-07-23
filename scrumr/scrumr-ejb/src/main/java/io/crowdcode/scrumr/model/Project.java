@@ -1,28 +1,103 @@
 package io.crowdcode.scrumr.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name=Project.FIND_ALL, query="SELECT u FROM User u")
+})
 public class Project extends AbstractEntity {
+	
+	public static final String FIND_ALL = "Project.findAll";
 
-	private String title;
-
-	public String getTitle() {
-		return title;
+	@Column(unique=true)
+	private String name;
+	
+	private String description;
+	
+	@ManyToOne
+	private User productOwner;
+	
+	@ManyToOne
+	private User scrumMaster;
+	
+	@OneToMany
+	private List<User> developers = new ArrayList<>();
+	
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Project withTitle(String title) {
-		setTitle(title);
+	public Project withName(String name) {
+		setName(name);
 		return this;
 	}
 
-	@Override
-	public String toString() {
-		return "Project [id=" + getId() + ", title=" + title + "]";
+	public String getDescription()
+	{
+		return description;
 	}
+
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+	
+	public Project withDescription(String description)
+	{
+		setDescription(description);
+		return this;
+	}
+
+	public User getProductOwner()
+	{
+		return productOwner;
+	}
+
+	public void setProductOwner(User productOwner)
+	{
+		this.productOwner = productOwner;
+	}
+
+	public User getScrumMaster()
+	{
+		return scrumMaster;
+	}
+
+	public void setScrumMaster(User scrumMaster)
+	{
+		this.scrumMaster = scrumMaster;
+	}
+
+	public List<User> getDevelopers()
+	{
+		return developers;
+	}
+
+	public void setDevelopers(List<User> developers)
+	{
+		this.developers = developers;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Project [name=" + name + ", description=" + description + ", productOwner=" + productOwner + ", scrumMaster=" + scrumMaster
+				+ ", developers=" + developers + "]";
+	}
+
+	
 	
 }
