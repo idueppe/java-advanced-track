@@ -1,14 +1,28 @@
 package io.crowdcode.scrumr.dao;
 
-import io.crowdcode.scrumr.service.ProjectService;
+import io.crowdcode.scrumr.model.Project;
 
-import javax.ejb.Local;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Named;
 
 @Named
 @Stateless
-@Local(ProjectService.class)
-public class ProjectDaoBean {
+public class ProjectDaoBean implements ProjectDao {
+
+	@Override
+	public List<Project> findAllProjects()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void persist(Project project)
+	{
+		// TODO Auto-generated method stub
+		
+	}
 
 }
