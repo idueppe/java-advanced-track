@@ -17,12 +17,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 
 @Stateless
-public class UserManagementServiceBean
+public class UserManagementServiceBean implements UserManagementService
 {
 	private static final int MIN_PASSWORD_LENGTH = 5;
 
 	private UserDao userDao;
 	
+	/* (non-Javadoc)
+	 * @see io.crowdcode.scrumr.service.UserManagementService#registerUser(java.lang.String, java.lang.String, java.lang.String, boolean)
+	 */
+	@Override
 	public String registerUser(String email, String name, String password, boolean isAdmin) throws InvalidEmailException,
 			EmailAlreadyExistException, EmptyNameException, PasswordToShortException
 	{
@@ -50,6 +54,10 @@ public class UserManagementServiceBean
 		return user.getId();
 	}
 
+	/* (non-Javadoc)
+	 * @see io.crowdcode.scrumr.service.UserManagementService#removeUser(java.lang.String)
+	 */
+	@Override
 	public void removeUser(String email) throws LastAdministorException, UserNotFoundException
 	{
 		User user = userDao.findUserByEmail(email);
@@ -64,6 +72,10 @@ public class UserManagementServiceBean
 		userDao.remove(user);
 	}
 
+	/* (non-Javadoc)
+	 * @see io.crowdcode.scrumr.service.UserManagementService#updateUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)
+	 */
+	@Override
 	public void updateUser(String email, String name, String password, String newEmail, boolean isAdmin) throws UserNotFoundException, LastAdministorException
 	{
 		User user = userDao.findUserByEmail(email);
@@ -82,6 +94,10 @@ public class UserManagementServiceBean
 		return user.isAdmin() && userDao.findAdmins().size() == 1;
 	}
 
+	/* (non-Javadoc)
+	 * @see io.crowdcode.scrumr.service.UserManagementService#getUserList()
+	 */
+	@Override
 	public List<User> getUserList()
 	{
 		return userDao.findAllUsers();
