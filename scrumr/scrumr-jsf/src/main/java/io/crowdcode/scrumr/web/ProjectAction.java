@@ -18,9 +18,9 @@ public class ProjectAction implements Serializable
 
 	private List<Project> projects = new ArrayList<>();
 
-	public void add(String title)
+	public void add(String name)
 	{
-		projects.add(new Project().withTitle(title));
+		projects.add(new Project().withName(name));
 	}
 
 	public int getProjects()
