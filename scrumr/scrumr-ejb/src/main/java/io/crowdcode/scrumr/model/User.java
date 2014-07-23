@@ -87,5 +87,13 @@ public class User extends AbstractEntity implements Identifiable
 		setAdmin(isAdmin);
 		return this;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "User [email=" + email + ", fullname=" + fullname + ", admin=" + admin + "]";
+	}
+	
+	
 	
 }
