@@ -13,13 +13,13 @@ import java.util.List;
 public interface UserManagementService
 {
 
-	public String registerUser(String email, String name, String password, boolean isAdmin) throws InvalidEmailException,
-			EmailAlreadyExistException, EmptyNameException, PasswordToShortException;
+	public String registerUser(String email, String name, String password, boolean isAdmin) //
+			throws InvalidEmailException, EmailAlreadyExistException, EmptyNameException, PasswordToShortException;
 
 	public void removeUser(String email) throws LastAdministorException, UserNotFoundException;
 
-	public void updateUser(String email, String name, String password, String newEmail, boolean isAdmin) throws UserNotFoundException,
-			LastAdministorException;
+	public void updateUser(String email, String name, String password, String newEmail, boolean isAdmin) //
+			throws UserNotFoundException, LastAdministorException;
 
 	public List<User> getUserList();
 
