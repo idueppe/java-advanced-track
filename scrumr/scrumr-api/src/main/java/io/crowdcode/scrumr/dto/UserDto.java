@@ -1,7 +1,11 @@
 package io.crowdcode.scrumr.dto;
 
-public class UserDto
+import java.io.Serializable;
+
+public class UserDto implements Serializable
 {
+
+	private static final long serialVersionUID = 1L;
 
 	private String id;
 	
@@ -82,6 +86,12 @@ public class UserDto
 	{
 		setAdmin(isAdmin);
 		return this;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "UserDto [id=" + id + ", email=" + email + ", password=" + password + ", fullname=" + fullname + ", admin=" + admin + "]";
 	}
 
 }

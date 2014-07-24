@@ -5,6 +5,7 @@ import io.crowdcode.scrumr.model.User;
 import java.util.List;
 import java.util.UUID;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ import javax.persistence.TypedQuery;
 
 @Named
 @Stateless
+@Local(UserDao.class)
 public class UserDaoBean implements UserDao
 {
 

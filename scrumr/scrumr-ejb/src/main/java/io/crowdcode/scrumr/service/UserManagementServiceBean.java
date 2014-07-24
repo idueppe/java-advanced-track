@@ -11,16 +11,20 @@ import io.crowdcode.scrumr.model.User;
 
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 
 @Stateless
+@Local(UserManagementService.class)
 public class UserManagementServiceBean implements UserManagementService
 {
 	private static final int MIN_PASSWORD_LENGTH = 5;
 
+	@EJB
 	private UserDao userDao;
 	
 	/* (non-Javadoc)
