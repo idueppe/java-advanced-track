@@ -1,0 +1,78 @@
+
+
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="utf-8" />
+
+
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="scrumr.crowdcode.io" />
+	<meta name="keywords" content="scrumr.crowdcode.io" />
+	<title><ui:insert name="title">Scrumr</ui:insert></title>
+	<h:outputStylesheet name="css/bootstrap.css" />
+</h:head>
+
+<h:body>
+	<h:form>
+		<nav class="navbar navbar-static-top navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#main-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<h:commandLink class="navbar-brand" href="/index">Home</h:commandLink>
+				</div>
+				<div class="collapse navbar-collapse" id="main-navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<ui:insert name="navigation">
+							<li class="active"><h:commandLink class="navbar-brand"
+									href="/index">Home</h:commandLink></li>
+						</ui:insert>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</h:form>
+
+	<div class="container-fluid">
+		<!-- header -->
+		<ui:insert name="main">
+			<div class="row">
+				<div class="jumbotron">
+					<h1>Scrumr</h1>
+					<h4>An Project Management Example</h4>
+				</div>
+			</div>
+		</ui:insert>
+	</div>
+
+
+
+	<footer class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<ui:insert name="footer">
+				<div class="row">
+					<div class="col-md-3">
+						(c) by
+						crowdcode.io<br />
+					</div>
+				</div>
+			</ui:insert>
+		</div>
+	</footer>
+	<h:outputScript name="js/jquery.js" />
+	<h:outputScript name="js/bootstrap.js" />
+</h:body>
+</html>
+
+
+
+
+
