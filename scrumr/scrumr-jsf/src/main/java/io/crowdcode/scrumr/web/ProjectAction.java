@@ -1,6 +1,6 @@
 package io.crowdcode.scrumr.web;
 
-import io.crowdcode.scrumr.model.Project;
+import io.crowdcode.scrumr.dto.ProjectDto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ public class ProjectAction implements Serializable
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Project> projects = new ArrayList<>();
+	private List<ProjectDto> projects = new ArrayList<>();
 
 	public void add(String name)
 	{
-		projects.add(new Project().withName(name));
+		projects.add(new ProjectDto().withName(name));
 	}
 
 	public int getProjects()
