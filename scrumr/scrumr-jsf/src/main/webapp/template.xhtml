@@ -2,12 +2,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<meta charset="utf-8" />
 	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="description" content="scrumr.crowdcode.io" />
 	<meta name="keywords" content="scrumr.crowdcode.io" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><ui:insert name="title">Scrumr</ui:insert></title>
+	<h:outputStylesheet name="css/normalize.css" />
 	<h:outputStylesheet name="css/bootstrap.css" />
 </h:head>
 
@@ -55,7 +56,8 @@
 		<div class="container">
 			<ui:insert name="footer">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-md-2 col-md-offset-1">
+						<small>Debug: Ctrl+Shift+D <ui:debug rendered="true" hotkey="d" /> </small>
 						(c) by crowdcode.io<br />
 					</div>
 				</div>
