@@ -1,8 +1,8 @@
-<ui:composition 
-	xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
 	template="/template.xhtml">
 	<ui:define name="title">
 		<h:outputText value="Scrumr Users"></h:outputText>
@@ -11,13 +11,39 @@
 	<ui:define name="navigation">
 		<li><h:commandLink action="/index.xhtml">Home</h:commandLink></li>
 		<li><h:commandLink action="/views/admin/projects.xhtml">Projects</h:commandLink></li>
-		<li class="active"><h:commandLink action="/views/admin/users.xhtml">Users</h:commandLink></li>
+		<li class="active"><h:commandLink
+				action="/views/admin/users.xhtml">Users</h:commandLink></li>
 	</ui:define>
-	
+
 	<ui:define name="main">
 		<h4>Users</h4>
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<h:form>
+					<h:outputLabel value="Email" for="emailInput" />
+					<h:inputText 
+						id="emailInput" 
+						value="#{usersAction.newUser.email}"
+						required="true">
+						<f:validateLength minimum="6" />
+						<f:validator validatorId="emailValidator"/>
+					</h:inputText>
+					<h:commandButton action="#{usersAction.addUser()}" value="Add" />
+					<br/><h:message for="emailInput" errorClass="text-danger"/>
+				</h:form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<p:dataList value="#{usersAction.users}" var="user" >
+					<h:outputText value="#{user.email}" />	
+				</p:dataList>
+			</div>
+		</div>
+
 	</ui:define>
-	
-	
+
+
 
 </ui:composition>
