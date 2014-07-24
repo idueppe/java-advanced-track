@@ -84,4 +84,10 @@ public class UserDto
 		return this;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "UserDto [id=" + id + ", email=" + email + ", password=" + password + ", fullname=" + fullname + ", admin=" + admin + "]";
+	}
+
 }
