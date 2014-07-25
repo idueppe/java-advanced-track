@@ -25,19 +25,19 @@
 				<div class="col-sm-10 col-sm-offset-1">
 					<p:outputLabel value="Email" for="emailInput"
 						styleClass="control-label" />
-					<p:inputText id="emailInput" value="#{selectedUser.email}"
+					<h:inputText id="emailInput" value="#{selectedUser.email}"
 						styleClass="form-control" required="true">
 						<f:validateLength minimum="6" />
 						<f:validator validatorId="emailValidator" />
-					</p:inputText>
+					</h:inputText>
 					<h:message for="emailInput" errorClass="text-danger" />
 
 					<p:outputLabel value="Fullname" for="fullnameInput"
 						styleClass="control-label" />
-					<p:inputText id="fullnameInput" value="#{selectedUser.fullname}"
+					<h:inputText id="fullnameInput" value="#{selectedUser.fullname}"
 						required="true" styleClass="form-control">
 						<f:validateLength minimum="6" />
-					</p:inputText>
+					</h:inputText>
 					<h:message for="fullnameInput" errorClass="text-danger" />
 
 					<h:outputLabel value="Password" for="passwordInput"
@@ -50,10 +50,10 @@
 
 					<p:outputLabel for="adminCheckbox" value="is Administrator "
 						styleClass="control-label">
-						<p:selectBooleanCheckbox id="adminCheckbox"
-							value="#{selectedUser.admin}">
-						</p:selectBooleanCheckbox>
 					</p:outputLabel>
+					<p:selectBooleanCheckbox id="adminCheckbox"
+						value="#{selectedUser.admin}">
+					</p:selectBooleanCheckbox>
 
 				</div>
 			</div>
