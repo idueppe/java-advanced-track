@@ -1,4 +1,4 @@
-package io.crowdcode.scrumr.web;
+package io.crowdcode.scrumr.web.validation;
 
 import javax.faces.application.FacesMessage;
 
