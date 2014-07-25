@@ -12,6 +12,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.lang3.StringUtils;
+
 @Named
 @Stateless
 public class ProjectManagementServiceBean
@@ -47,6 +49,10 @@ public class ProjectManagementServiceBean
 
 	private User userByEmail(String email) throws UserNotFoundException
 	{
+		// FIXME
+		if (StringUtils.isBlank(email))
+			return null;
+		
 		User user = userDao.findUserByEmail(email);
 		if (user == null)
 			throw new UserNotFoundException(email);

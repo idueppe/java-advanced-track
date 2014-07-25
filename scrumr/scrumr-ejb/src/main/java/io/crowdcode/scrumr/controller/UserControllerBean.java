@@ -39,6 +39,11 @@ public class UserControllerBean implements UserController
 	@Override
 	public String registerUser(UserDto userDto) throws InvalidEmailException, EmailAlreadyExistException, EmptyNameException, PasswordToShortException
 	{
+		// FIXME idueppe - use entity instead of separated parameters
+		//		User user = new User()
+		//			.withEmail(userDto.getEmail())
+		//			.withFullname(userDto.getFullname());
+		
 		final String id = userManagementService.registerUser(userDto.getEmail(), userDto.getFullname(), userDto.getPassword(), userDto.isAdmin());
 		userDto.setId(id);
 		return id;
