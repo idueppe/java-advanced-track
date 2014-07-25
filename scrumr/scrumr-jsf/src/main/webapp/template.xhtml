@@ -19,10 +19,9 @@
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse"
 						data-target="#main-navbar-collapse">
-						<span class="sr-only">Toggle navigation</span> 
-						<span class="icon-bar"></span> 
-						<span class="icon-bar"></span> 
-						<span class="icon-bar"></span>
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
 					</button>
 					<h:commandLink class="navbar-brand" href="/index">Home</h:commandLink>
 				</div>
@@ -39,12 +38,27 @@
 	</h:form>
 
 	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-10">
+				<ui:insert name="pageTitle">
+					<h3>PageTitle</h3>
+				</ui:insert>
+			</div>
+		</div>
+
 		<!-- header -->
+		<div class="row">
+			<div class="col-sm-10">
+				<h:messages globalOnly="false" errorClass="text-danger"
+					infoClass="text-info" warnClass="text-warning" />
+			</div>
+		</div>
+
 		<ui:insert name="main">
 			<div class="row">
 				<div class="jumbotron">
 					<h1>Scrumr</h1>
-					<h4>An Project Management Example</h4>
+					<h4>A Project Management Example</h4>
 				</div>
 			</div>
 		</ui:insert>
@@ -57,8 +71,9 @@
 			<ui:insert name="footer">
 				<div class="row">
 					<div class="col-md-2 col-md-offset-1">
-						<small>Debug: Ctrl+Shift+D <ui:debug rendered="true" hotkey="d" /> </small>
-						(c) by crowdcode.io<br />
+						<small>Debug: Ctrl+Shift+D <ui:debug rendered="true"
+								hotkey="d" />
+						</small> (c) by crowdcode.io<br />
 					</div>
 				</div>
 			</ui:insert>
