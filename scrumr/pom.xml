@@ -16,13 +16,10 @@
 		<module>scrumr-ear</module>
 		<module>scrumr-api</module>
 		<module>scrumr-cli</module>
+		<module>scrumr-wicket</module>
 	</modules>
 
 	<properties>
-		<!-- Explicitly declaring the source encoding eliminates the following 
-			message: -->
-		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
-			resources, i.e. build is platform dependent! -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<version.javaee>7.0</version.javaee>
@@ -62,13 +59,18 @@
 				<version>${project.version}</version>
 			</dependency>
 
-
 			<dependency>
 				<groupId>io.crowdcode.scrumr</groupId>
 				<artifactId>scrumr-jsf</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
-				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>io.crowdcode.scrumr</groupId>
+				<artifactId>scrumr-wicket</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
 			</dependency>
 
 			<dependency>
