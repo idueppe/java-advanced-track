@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<name>scrumr</name>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>io.crowdcode</groupId>
+	<groupId>io.crowdcode.scrumr</groupId>
 	<artifactId>scrumr</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -44,27 +44,27 @@
 			<!-- Define the version of the EJB jar so that we don't need to repeat 
 				ourselves in every module -->
 			<dependency>
-				<groupId>io.crowdcode</groupId>
+				<groupId>io.crowdcode.scrumr</groupId>
 				<artifactId>scrumr-ejb</artifactId>
 				<version>${project.version}</version>
 				<type>ejb</type>
 			</dependency>
 
 			<dependency>
-				<groupId>io.crowdcode</groupId>
+				<groupId>io.crowdcode.scrumr</groupId>
 				<artifactId>scrumr-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>io.crowdcode</groupId>
+				<groupId>io.crowdcode.scrumr</groupId>
 				<artifactId>scrumr-cli</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 
 			<dependency>
-				<groupId>io.crowdcode</groupId>
+				<groupId>io.crowdcode.scrumr</groupId>
 				<artifactId>scrumr-jsf</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
