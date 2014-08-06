@@ -15,36 +15,67 @@
 
 	<name>scrumr - wicket</name>
 
-	<properties>
-		<wicket.version>6.16.0</wicket.version>
-	</properties>
-	
 	<dependencies>
+		<dependency>
+			<groupId>io.crowdcode.scrumr</groupId>
+			<artifactId>scrumr-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.crowdcode.scrumr</groupId>
+			<artifactId>scrumr-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.wicket</groupId> -->
+<!-- 			<artifactId>wicket-ioc</artifactId> -->
+<!-- 			<version>${wicket.version}</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.wicket</groupId> -->
+<!-- 			<artifactId>wicket-cdi-1.1</artifactId> -->
+<!-- 			<version>${wicket.version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.wicketstuff</groupId>
+			<artifactId>wicketstuff-javaee-inject</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
 
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
-		<!--  JUNIT DEPENDENCY FOR TESTING -->
+		<!-- JUNIT DEPENDENCY FOR TESTING -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<!--  JETTY DEPENDENCIES FOR TESTING  -->
+		<!-- JETTY DEPENDENCIES FOR TESTING -->
 		<dependency>
 			<groupId>org.eclipse.jetty.aggregate</groupId>
 			<artifactId>jetty-all-server</artifactId>

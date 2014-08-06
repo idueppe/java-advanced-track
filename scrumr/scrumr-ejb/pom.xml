@@ -23,6 +23,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-ioc</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<scope>provided</scope>
