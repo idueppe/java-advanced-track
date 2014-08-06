@@ -1,7 +1,9 @@
-package io.crowdcode.scrumr;
+package io.crowdcode.scrumr.ui;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.wicketstuff.javaee.injection.JavaEEComponentInjector;
+import org.wicketstuff.javaee.naming.global.AppJndiNamingStrategy;
 
 /**
  * Application object for your web application. If you want to run this
@@ -26,8 +28,8 @@ public class WicketApplication extends WebApplication
 	@Override
 	public void init()
 	{
+		getComponentInstantiationListeners().add(new JavaEEComponentInjector(this, new AppJndiNamingStrategy("scrumr-ejb")));
 		super.init();
-
-		// add your configuration here
 	}
+
 }

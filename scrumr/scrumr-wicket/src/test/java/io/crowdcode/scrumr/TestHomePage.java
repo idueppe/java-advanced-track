@@ -1,5 +1,8 @@
 package io.crowdcode.scrumr;
 
+import io.crowdcode.scrumr.ui.HomePage;
+import io.crowdcode.scrumr.ui.WicketApplication;
+
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
