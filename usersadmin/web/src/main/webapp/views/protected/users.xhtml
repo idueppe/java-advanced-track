@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/templates/bootstrap.xhtml">
+
+	<ui:define name="navigation">
+		<h:form>
+			<ul class="nav nav-pills pull-right">
+				<li><h:commandLink action="/views/home">Start</h:commandLink></li>
+				<li class="active"><h:commandLink >Nutzer</h:commandLink></li>
+			</ul>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="main">
+		<div>
+			<h:dataTable value="#{usersAction.users}" var="user">
+				<h:column>
+					<f:facet name="header">Username</f:facet>
+					<h:outputText value="#{user.username}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					<h:outputText value="#{user.email}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Role</f:facet>
+					<h:outputText value="#{user.roleName}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+
+		<div>
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel for="username" value="Username" />
+					<h:inputText id="username" value="#{userDto.username}">
+						<f:validateLength minimum="4" />
+					</h:inputText>
+					<h:message for="username" errorClass="error" />
+					<h:outputLabel for="email" value="Email" />
+					<h:inputText id="email" value="#{userDto.email}">
+						<f:validateLength minimum="5"></f:validateLength>
+					</h:inputText>
+					<h:message for="email" errorClass="error" />
+					<h:outputLabel for="role" value="Role" />
+
+					<h:selectOneMenu id="role" value="#{userDto.roleName}">
+						<f:selectItem itemLabel="Administrator" itemValue="ADMIN" />
+						<f:selectItem itemLabel="User" itemValue="USER" />
+					</h:selectOneMenu>
+					<h:message for="role" errorClass="error" />
+
+					<h:commandButton action="#{usersAction.createUser}"
+						value="Create User" styleClass="button"/>
+				</h:panelGrid>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>

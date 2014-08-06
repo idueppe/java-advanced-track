@@ -1,26 +1,37 @@
 package io.crowdcode.scrumr.dao;
 
 import io.crowdcode.scrumr.model.Project;
-import io.crowdcode.scrumr.service.ProjectService;
+
+import java.util.List;
+import java.util.UUID;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Named
 @Stateless
-@Local(ProjectService.class)
-public class ProjectDaoBean {
+@Local(ProjectDao.class)
+public class ProjectDaoBean implements ProjectDao {
 
 	@PersistenceContext
 	private EntityManager em;
 	
-	public Long persistProject(Project project)
+	@Override
+	public List<Project> findAllProjects()
 	{
-		em.persist(project);
-		return project.getId();
+		TypedQuery<Project> query = em.createNamedQuery(Project.FIND_ALL, Project.class);
+		return query.getResultList();
 	}
-	
+
+	@Override
+	public void persist(Project project)
+	{
+		project.setId(UUID.randomUUID().toString());
+		em.persist(project);
+	}
+
 }

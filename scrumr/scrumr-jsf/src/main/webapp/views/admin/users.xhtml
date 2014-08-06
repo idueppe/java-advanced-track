@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/template.xhtml">
+	<ui:define name="title">
+		<h:outputText value="Scrumr Users"></h:outputText>
+	</ui:define>
+
+	<ui:define name="navigation">
+		<li><h:commandLink action="home">Home</h:commandLink></li>
+		<li><h:commandLink action="manageProjects">Projects</h:commandLink></li>
+		<li class="active"><h:commandLink action="manageUsers">Users</h:commandLink></li>
+	</ui:define>
+
+	<ui:define name="pageTitle">
+		<h4>Users</h4>
+	</ui:define>
+
+	<ui:define name="main">
+		<div class="row">
+			<div class="col-sm-10">
+				<h:form>
+					<p:dataTable value="#{usersAction.users}" var="user">
+						<p:column>
+							<f:facet name="header">Email</f:facet>
+							<h:outputText value="#{user.email}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">Name</f:facet>
+							<h:outputText value="#{user.fullname}" />
+						</p:column>
+						<p:column headerText="Action">
+							<h:commandButton action="#{usersAction.edit(user)}" value="Edit" >
+							</h:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</div>
+		</div>
+
+		<h:form styleClass="form" id="userForm"
+			rendered="#{usersAction.editing}">
+			<p:panelGrid columns="3">
+				<p:outputLabel value="Email" for="emailInput"
+					styleClass="control-label" />
+				<h:inputText id="emailInput" value="#{selectedUser.email}"
+					styleClass="form-control" required="true">
+					<f:validateLength minimum="6" />
+					<f:validator validatorId="emailValidator" />
+				</h:inputText>
+				<h:message for="emailInput" errorClass="text-danger" />
+
+				<p:outputLabel value="Fullname" for="fullnameInput"
+					styleClass="control-label" />
+				<h:inputText id="fullnameInput" value="#{selectedUser.fullname}"
+					required="true" styleClass="form-control">
+					<f:validateLength minimum="6" />
+				</h:inputText>
+				<h:message for="fullnameInput" errorClass="text-danger" />
+
+				<h:outputLabel value="Password" for="passwordInput"
+					styleClass="control-label" />
+				<h:inputSecret id="passwordInput" value="#{selectedUser.password}"
+					required="true" styleClass="form-control">
+					<f:validateLength minimum="6" />
+				</h:inputSecret>
+				<h:message for="passwordInput" errorClass="text-danger" />
+
+				<p:outputLabel for="adminCheckbox" value="is Administrator "
+					styleClass="control-label">
+				</p:outputLabel>
+				<p:selectBooleanCheckbox id="adminCheckbox"
+					value="#{selectedUser.admin}">
+				</p:selectBooleanCheckbox>
+				<h:message for="adminCheckbox" errorClass="text-danger" />
+			</p:panelGrid>
+
+			<h:commandButton action="#{usersAction.add()}" value="Add"
+				styleClass="btn btn-primary" rendered="#{!usersAction.updating}" />
+			<h:commandButton action="#{userAction.update()}" value="Update"
+				styleClass="btn btn-primary" rendered="#{usersAction.updating}" />
+			<h:commandButton action="#{usersAction.cancel()}" value="Cancel"
+				styleClass="btn btn-warning" immediate="true">
+				<f:ajax render="@all" />
+			</h:commandButton>
+		</h:form>
+
+		<h:form rendered="#{!usersAction.editing}" id="formNewUserButton">
+			<div class="row">
+				<div class="col-sm-10">
+					<p>
+						<h:commandButton action="#{usersAction.create()}" value="New User"
+							styleClass="btn btn-primary" />
+					</p>
+				</div>
+			</div>
+		</h:form>
+
+	</ui:define>
+
+
+
+</ui:composition>
