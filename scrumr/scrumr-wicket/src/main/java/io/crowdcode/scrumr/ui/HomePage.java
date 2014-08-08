@@ -11,6 +11,8 @@ public class HomePage extends WebPage {
 		super(parameters);
 		
 		add(new Label("pageTitle", "Wicket-Scrumr"));
+		 
+		
 		
     }
 }
