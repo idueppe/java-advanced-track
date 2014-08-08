@@ -5,21 +5,12 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
-import com.vaadin.data.Property.ValueChangeEvent;
-import com.vaadin.data.Property.ValueChangeListener;
-import com.vaadin.event.ShortcutAction;
-import com.vaadin.event.ShortcutListener;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -30,7 +21,7 @@ import com.vaadin.ui.VerticalLayout;
  * @author idueppe
  */
 @Title("Scrumr")
-@Theme("scrumrtheme")
+//@Theme("scrumrtheme")
 @SuppressWarnings("serial")
 public class ScrumrUI extends UI
 {
@@ -61,11 +52,33 @@ public class ScrumrUI extends UI
 		{
 			root.removeAllComponents();
 		}
+		
 
 		rootLayout = new VerticalLayout();
 		rootLayout.setSizeFull();
 		root.addComponent(rootLayout);
+		
+		Label title = new Label("Scrumr-Vaadin");
+		rootLayout.addComponent(title);
+		
+		final TextField nameField = new TextField();
+		final Label nameLabel = new Label();
+		
+		Button sayHello = new Button("Say Hello", new ClickListener(){
 
+			@Override
+			public void buttonClick(ClickEvent event)
+			{
+				nameLabel.setCaption("Hello "+nameField.getValue());
+			}}	
+		);
+		
+		rootLayout.addComponent(nameField);
+		rootLayout.addComponent(sayHello);
+		rootLayout.addComponent(nameLabel);
+		
+		UserEditComponent editComponent = new UserEditComponent();
+		rootLayout.addComponent(editComponent);
 	}
 
 }
