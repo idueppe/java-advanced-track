@@ -40,8 +40,6 @@ public class ProjectDaoBeanIT
 	@InjectMocks
 	private ProjectDaoBean projectDao;
 	
-	private String email = "junit@junit.org";
-	
 	@Before
 	public void setUp() {
 		em.getTransaction().begin();
