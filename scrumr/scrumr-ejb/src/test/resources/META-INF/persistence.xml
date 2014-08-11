@@ -8,6 +8,9 @@
 
 		<class>io.crowdcode.scrumr.model.User</class>
 		<class>io.crowdcode.scrumr.model.Project</class>
+		<class>io.crowdcode.scrumr.model.BacklogItem</class>
+		<class>io.crowdcode.scrumr.model.Sprint</class>
+		<class>io.crowdcode.scrumr.model.Task</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
