@@ -45,12 +45,14 @@ public class UserManagementServiceTest
 	private ArgumentCaptor<User> userCaptor;
 
 	@Test
-	public void testRegisterUser() throws Exception
+	public void test_that_a_user_can_be_register_if_data_is_valid() throws Exception
 	{
 		// arrange
 		doAnswer(withId("abc123")).when(userDao).persist(any(User.class));
+
 		// act
 		String id = userService.registerUser("email@unit.org","name", "password",false);
+
 		// assert
 		assertThat(id, is("abc123"));
 		verify(userDao,times(1)).persist(any(User.class));
