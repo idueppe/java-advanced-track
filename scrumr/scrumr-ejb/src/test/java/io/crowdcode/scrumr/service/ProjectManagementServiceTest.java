@@ -45,7 +45,7 @@ public class ProjectManagementServiceTest
 	private ArgumentCaptor<Project> projectCaptor;
 
 	@Test
-	public void test_findAllProjects_is_returning_expected_list()
+	public void test_if_findAllProjects_is_returning_expected_list()
 	{
 		final Project project = new Project();
 		when(projectDao.findAllProjects()).thenReturn(Arrays.asList(project));

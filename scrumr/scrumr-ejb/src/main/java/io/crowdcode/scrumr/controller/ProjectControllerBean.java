@@ -4,6 +4,7 @@ import io.crowdcode.scrumr.converters.ProjectDtoConverter;
 import io.crowdcode.scrumr.dto.ProjectDto;
 import io.crowdcode.scrumr.exception.UserNotFoundException;
 import io.crowdcode.scrumr.service.ProjectManagementServiceBean;
+import io.crowdcode.scrumr.service.ProjectService;
 
 import java.util.List;
 
@@ -19,7 +20,10 @@ public class ProjectControllerBean implements ProjectController
 {
 
 	@Inject
-	private ProjectManagementServiceBean projectService;
+	private ProjectManagementServiceBean projectManagementService;
+	
+	@Inject
+	private ProjectService projectService;
 	
 	@Inject
 	private ProjectDtoConverter converter;
@@ -27,7 +31,7 @@ public class ProjectControllerBean implements ProjectController
 	@Override
 	public void createProject(ProjectDto project) throws UserNotFoundException
 	{
-		projectService.createProject(project.getName(), 
+		projectManagementService.createProject(project.getName(), 
 				project.getDescription(), 
 				project.getProductOwnerMail(), 
 				project.getScrumMasterMail(), 
@@ -43,7 +47,12 @@ public class ProjectControllerBean implements ProjectController
 	@Override
 	public List<ProjectDto> getProjects()
 	{
-		return converter.convert(projectService.findAllProjects());
+		return converter.convert(projectManagementService.findAllProjects());
+	}
+
+	public List<ProjectDto> findProjectsByEmail(String email)
+	{
+		return converter.convert(projectService.getProjectsByEmail(email));
 	}
 
 }

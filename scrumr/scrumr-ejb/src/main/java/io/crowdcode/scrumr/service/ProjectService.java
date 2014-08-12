@@ -1,11 +1,16 @@
 package io.crowdcode.scrumr.service;
 
 import io.crowdcode.scrumr.exception.UnknownSprintIdException;
+import io.crowdcode.scrumr.model.Project;
 import io.crowdcode.scrumr.model.Sprint;
+
+import java.util.List;
 
 
 public interface ProjectService {
 
-	Sprint getSprintById(String sprintId) throws UnknownSprintIdException;
+	public Sprint getSprintById(String sprintId) throws UnknownSprintIdException;
 	
+	public List<Project> getProjectsByEmail(String email);
+
 }

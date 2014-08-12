@@ -53,7 +53,7 @@ public class TaskServiceTest
 		when(sprint.getBacklogItems()).thenReturn(Arrays.asList(backlogItem));
 		
 		// Act
-		String taskId = taskService.addTaskToSprint("123", aTask());
+		String taskId = taskService.addTaskToSprint("123", aTaskDto());
 				
 		// Assert
 		assertThat(taskId, is(notNullValue()));
@@ -65,18 +65,17 @@ public class TaskServiceTest
 		assertThat(task.getName(), is("JUNIT"));
 	}
 	
+	private Task lastAdded;
 	
 	@Test
 	public void test_manual_testing() throws Exception
 	{
 		final Sprint sprint = new Sprint() {
 
-			private Task lastAdded;
-			
 			@Override
 			public List<BacklogItem> getBacklogItems()
 			{
-				return Arrays.asList(new BacklogItem());
+				return Arrays.asList(new BacklogItem().withId("backlogItemId"));
 			}
 
 			@Override
@@ -84,29 +83,32 @@ public class TaskServiceTest
 			{
 				lastAdded = task;
 			}
-			
-			
 		};
 		
+		when(projectService.getSprintById(anyString())).thenReturn(sprint);
+		taskService.addTaskToSprint("123", aTaskDto());
 		
+		assertThat(lastAdded.getName(), is("JUNIT") );
 		
 	}
+	
+	
 	@Test(expected=EmptyNameException.class)
 	public void test_that_an_empty_name_is_not_allowed() throws Exception
 	{
-		taskService.addTaskToSprint("123", aTask().withName(""));
+		taskService.addTaskToSprint("123", aTaskDto().withName(""));
 	}
 	
 	@Test(expected=DescriptionToShortException.class)
 	public void test_that_an_empty_description_is_not_allowed() throws Exception
 	{
-		taskService.addTaskToSprint("123", aTask().withDescription(""));
+		taskService.addTaskToSprint("123", aTaskDto().withDescription(""));
 	}
 	
 	@Test(expected=InvalidBacklogItemException.class)
 	public void test_that_a_backlog_item_id_is_provided() throws Exception
 	{
-		taskService.addTaskToSprint("123", aTask().withBacklogItemId(""));
+		taskService.addTaskToSprint("123", aTaskDto().withBacklogItemId(""));
 	}
 	
 	
@@ -119,7 +121,7 @@ public class TaskServiceTest
 		when(sprint.getBacklogItems()).thenReturn(new ArrayList<BacklogItem>());
 		
 		// Act
-		taskService.addTaskToSprint("123", aTask().withBacklogItemId("unknown"));
+		taskService.addTaskToSprint("123", aTaskDto().withBacklogItemId("unknown"));
 	}
 	
 	
@@ -131,11 +133,11 @@ public class TaskServiceTest
 		// Arrange
 		when(projectService.getSprintById(anyString())).thenThrow(UnknownSprintIdException.class);
 		// Act
-		taskService.addTaskToSprint("123", aTask());
+		taskService.addTaskToSprint("123", aTaskDto());
 		// Assert
 	}
 	
-	private TaskDto aTask() 
+	private TaskDto aTaskDto() 
 	{
 		return new TaskDto()
 			.withName("JUNIT")
