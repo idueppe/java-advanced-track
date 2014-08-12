@@ -54,7 +54,7 @@
                     
                     <webModule>
                         <groupId>io.crowdcode.scrumr</groupId>
-                        <artifactId>scrumr-scrumr</artifactId>
+                        <artifactId>scrumr-jsf</artifactId>
                         <contextRoot>/scrumr-jsf</contextRoot>
                     </webModule>
                     </modules>
