@@ -11,4 +11,6 @@ public interface ProjectDao
 
 	public void persist(Project project);
 
+	public Project getProject(String projectId);
+
 }

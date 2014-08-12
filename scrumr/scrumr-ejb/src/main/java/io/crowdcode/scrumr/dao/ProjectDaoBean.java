@@ -34,4 +34,10 @@ public class ProjectDaoBean implements ProjectDao {
 		em.persist(project);
 	}
 
+	@Override
+	public Project getProject(String projectId)
+	{
+		return em.find(Project.class, projectId );
+	}
+
 }
