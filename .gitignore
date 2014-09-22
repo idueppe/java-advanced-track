@@ -5,3 +5,6 @@ target
 *.*~
 .idea
 *.iml
+gwt-unitCache
+.tern-project
+widgetsets

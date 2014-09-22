@@ -16,13 +16,11 @@
 		<module>scrumr-ear</module>
 		<module>scrumr-api</module>
 		<module>scrumr-cli</module>
+		<module>scrumr-wicket</module>
+		<module>scrumr-vaadin</module>
 	</modules>
 
 	<properties>
-		<!-- Explicitly declaring the source encoding eliminates the following 
-			message: -->
-		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
-			resources, i.e. build is platform dependent! -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<version.javaee>7.0</version.javaee>
@@ -32,6 +30,7 @@
 		<version.ejb.plugin>2.3</version.ejb.plugin>
 		<version.surefire.plugin>2.10</version.surefire.plugin>
 		<version.war.plugin>2.4</version.war.plugin>
+		<wicket.version>6.16.0</wicket.version>
 
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>1.7</maven.compiler.target>
@@ -62,13 +61,25 @@
 				<version>${project.version}</version>
 			</dependency>
 
-
 			<dependency>
 				<groupId>io.crowdcode.scrumr</groupId>
 				<artifactId>scrumr-jsf</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
-				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>io.crowdcode.scrumr</groupId>
+				<artifactId>scrumr-wicket</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+			</dependency>
+
+			<dependency>
+				<groupId>io.crowdcode.scrumr</groupId>
+				<artifactId>scrumr-vaadin</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
 			</dependency>
 
 			<dependency>
