@@ -24,11 +24,6 @@
 		</dependency>
 		<dependency>
 			<groupId>io.crowdcode.scrumr</groupId>
-			<artifactId>scrumr-wicket</artifactId>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>io.crowdcode.scrumr</groupId>
 			<artifactId>scrumr-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
