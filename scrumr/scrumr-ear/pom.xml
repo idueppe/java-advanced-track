@@ -24,6 +24,11 @@
 		</dependency>
 		<dependency>
 			<groupId>io.crowdcode.scrumr</groupId>
+			<artifactId>scrumr-wicket</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>io.crowdcode.scrumr</groupId>
 			<artifactId>scrumr-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
@@ -56,6 +61,11 @@
 							<groupId>io.crowdcode.scrumr</groupId>
 							<artifactId>scrumr-jsf</artifactId>
 							<contextRoot>/scrumr-jsf</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>io.crowdcode.scrumr</groupId>
+							<artifactId>scrumr-wicket</artifactId>
+							<contextRoot>/scrumr-wicket</contextRoot>
 						</webModule>
 					</modules>
 					<fileNameMapping>no-version</fileNameMapping>

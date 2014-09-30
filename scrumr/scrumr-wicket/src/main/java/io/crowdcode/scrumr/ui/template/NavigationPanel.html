@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<nav class="navbar navbar-static-top navbar-inverse" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#main-navbar-collapse">
+					<span class="sr-only">Toogle</span> <span class="icon-bar"></span>
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+			</div>
+
+			<div class="collapse navbar-collapse" id="main-navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li wicket:id="navHomeLink"><a href="#">Home</a></li>
+					<li wicket:id="navProjectAdminLink"><a href="#">Projects</a></li>
+					<li wicket:id="navUserAdminLink"><a href="#">Users</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</wicket:panel>
+
+</body>
+</html>
