@@ -22,6 +22,8 @@ public class TemplatePage extends WebPage
 		successMessagePanel = new FeedbackPanel("successMessagePanel", new IFeedbackMessageFilter()
 		{
 			
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean accept(FeedbackMessage message)
 			{
@@ -30,6 +32,8 @@ public class TemplatePage extends WebPage
 		});
 		errorMessagePanel = new FeedbackPanel("errorMessagePanel", new IFeedbackMessageFilter()
 		{
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean accept(FeedbackMessage message)
 			{
