@@ -29,6 +29,11 @@
 		</dependency>
 		<dependency>
 			<groupId>io.crowdcode.scrumr</groupId>
+			<artifactId>scrumr-vaadin</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>io.crowdcode.scrumr</groupId>
 			<artifactId>scrumr-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
@@ -46,22 +51,36 @@
 				<artifactId>maven-ear-plugin</artifactId>
 				<version>${version.ear.plugin}</version>
 				<configuration>
+					<!-- Tell Maven we are using Java EE 6 -->
 					<version>6</version>
+					<!-- Use Java EE ear libraries as needed. Java EE ear libraries are 
+						in easy way to package any libraries needed in the ear, and automatically 
+						have any modules (EJB-JARs and WARs) use them -->
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
+						<!-- Default context root of the web app is /scrumr-web. If a custom 
+							context root is needed, uncomment the following snippet to register our War 
+							as a web module and set the contextRoot property -->
+
+						<webModule>
+							<groupId>io.crowdcode.scrumr</groupId>
+							<artifactId>scrumr-jsf</artifactId>
+							<contextRoot>/scrumr</contextRoot>
+						</webModule>
+
 						<webModule>
 							<groupId>io.crowdcode.scrumr</groupId>
 							<artifactId>scrumr-wicket</artifactId>
 							<contextRoot>/scrumr-wicket</contextRoot>
 						</webModule>
+
 						<webModule>
 							<groupId>io.crowdcode.scrumr</groupId>
-							<artifactId>scrumr-jsf</artifactId>
-							<contextRoot>/scrumr-jsf</contextRoot>
+							<artifactId>scrumr-vaadin</artifactId>
+							<contextRoot>/scrumr-vaadin</contextRoot>
 						</webModule>
 					</modules>
 					<fileNameMapping>no-version</fileNameMapping>
-					<skinnyWars>true</skinnyWars>
 				</configuration>
 			</plugin>
 		</plugins>

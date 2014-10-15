@@ -1,16 +1,60 @@
 package io.crowdcode.scrumr.ui.template;
 
-import java.util.logging.Logger;
-
+import org.apache.wicket.feedback.FeedbackMessage;
+import org.apache.wicket.feedback.IFeedbackMessageFilter;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-public class TemplatePage extends WebPage {
-	private static final Logger LOG = Logger.getLogger(TemplatePage.class.getName());
-	
-	private static final long serialVersionUID = 1L;
+public class TemplatePage extends WebPage
+{
 
-	public TemplatePage(final PageParameters parameters) {
+	private static final long serialVersionUID = 1L;
+	private NavigationPanel navigationPanel;
+	private FeedbackPanel successMessagePanel;
+	private FeedbackPanel errorMessagePanel;
+
+	public TemplatePage(PageParameters parameters)
+	{
 		super(parameters);
-    }
+		navigationPanel = new NavigationPanel("navigationPanel");
+		
+		successMessagePanel = new FeedbackPanel("successMessagePanel", new IFeedbackMessageFilter()
+		{
+			
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean accept(FeedbackMessage message)
+			{
+				return message.getLevel() <= FeedbackMessage.SUCCESS;
+			}
+		});
+		errorMessagePanel = new FeedbackPanel("errorMessagePanel", new IFeedbackMessageFilter()
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean accept(FeedbackMessage message)
+			{
+				return !(message.getLevel() <= FeedbackMessage.SUCCESS);
+			}
+		});
+		add(successMessagePanel);
+		add(errorMessagePanel);
+		add(navigationPanel);
+	}
+	
+	public NavigationPanel getNavigationPanel() {
+		return navigationPanel;
+	}
+
+	@Override
+	protected void onBeforeRender()
+	{
+		super.onBeforeRender();
+		errorMessagePanel.setVisible(errorMessagePanel.anyMessage());
+		successMessagePanel.setVisible(successMessagePanel.anyMessage());
+	}
+
 }

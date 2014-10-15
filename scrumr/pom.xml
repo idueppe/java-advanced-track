@@ -17,6 +17,7 @@
 		<module>scrumr-api</module>
 		<module>scrumr-cli</module>
 		<module>scrumr-wicket</module>
+		<module>scrumr-vaadin</module>
 	</modules>
 
 	<properties>
@@ -70,6 +71,13 @@
 			<dependency>
 				<groupId>io.crowdcode.scrumr</groupId>
 				<artifactId>scrumr-wicket</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+			</dependency>
+
+			<dependency>
+				<groupId>io.crowdcode.scrumr</groupId>
+				<artifactId>scrumr-vaadin</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
 			</dependency>

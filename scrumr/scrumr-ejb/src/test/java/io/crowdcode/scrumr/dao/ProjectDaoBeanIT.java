@@ -7,7 +7,11 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import io.crowdcode.scrumr.model.BacklogItem;
 import io.crowdcode.scrumr.model.Project;
+import io.crowdcode.scrumr.model.Sprint;
+import io.crowdcode.scrumr.model.Task;
+import io.crowdcode.scrumr.model.User;
 
 import java.util.List;
 
@@ -40,8 +44,6 @@ public class ProjectDaoBeanIT
 	@InjectMocks
 	private ProjectDaoBean projectDao;
 	
-	private String email = "junit@junit.org";
-	
 	@Before
 	public void setUp() {
 		em.getTransaction().begin();
@@ -56,7 +58,17 @@ public class ProjectDaoBeanIT
 	@Test
 	public void test_1_PersistProject()
 	{
-		projectDao.persist(new Project().withName("name").withDescription("description"));
+		final Project project = new Project()
+			.withName("name")
+			.withDescription("description")
+			.withProductOwner(new User().withEmail("product@owner.io"))
+			.withScrumMaster(new User().withEmail("scrum@master.io"))
+			.withDevelopers(new User().withEmail("deve@lop.er"))
+			.withBacklogItems(new BacklogItem())
+			.withSprint(new Sprint()
+				.withTasks(new Task()))
+			;
+		projectDao.persist(project);
 		verify(em,times(1)).persist(any(Project.class));
 	}
 	

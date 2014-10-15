@@ -1,8 +1,10 @@
 package io.crowdcode.scrumr.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -23,14 +25,20 @@ public class Project extends AbstractEntity {
 	
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private User productOwner;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private User scrumMaster;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST)
 	private List<User> developers = new ArrayList<>();
+
+	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
+	private List<BacklogItem> backlogItems = new ArrayList<>();
+	
+	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
+	private List<Sprint> sprints = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -103,6 +111,12 @@ public class Project extends AbstractEntity {
 		this.developers = developers;
 	}
 	
+	public Project withDevelopers(User... users)
+	{
+		developers.addAll(Arrays.asList(users));
+		return this;
+	}
+	
 	public Project addDeveloper(User developer) 
 	{
 		getDevelopers().add(developer);
@@ -116,6 +130,36 @@ public class Project extends AbstractEntity {
 				+ ", developers=" + developers + "]";
 	}
 
+	public List<BacklogItem> getBacklogItems()
+	{
+		return backlogItems;
+	}
+
+	public void setBacklogItems(List<BacklogItem> backlogItems)
+	{
+		this.backlogItems = backlogItems;
+	}
 	
+	public Project withBacklogItems(BacklogItem... items)
+	{
+		backlogItems.addAll(Arrays.asList(items));
+		return this;
+	}
+
+	public List<Sprint> getSprints()
+	{
+		return sprints;
+	}
+
+	public void setSprints(List<Sprint> sprints)
+	{
+		this.sprints = sprints;
+	}
+
+	public Project withSprint(Sprint... items)
+	{
+		sprints.addAll(Arrays.asList(items));
+		return this;
+	}
 	
 }
