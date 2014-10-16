@@ -27,9 +27,9 @@ public class InitializeDefaultUsers
 		{
 			userService.registerUser("ingo.dueppe@crowdcode.de", "Ingo Düppe", "masterkey", true);
 			userService.registerUser("marcus.noerder-tuitje@crowdcode.de", "Marcus Nörder-Tuitje", "masterkey", true);
-		} catch (InvalidEmailException | EmailAlreadyExistException | EmptyNameException | PasswordToShortException e)
+		} catch (Exception e)
 		{
-			throw new SystemException("Cannot initialize default users.", e);
+			throw new RuntimeException("Cannot initialize default users.", e);
 		}
 
 	}
