@@ -1,28 +1,35 @@
 /**
- * Created by idueppe on 24.09.14.
+ * Created by idueppe on 21.10.14.
  */
-var fibCache = {0: 0, 1: 1};
 
-function fibonacci(n) {
+/*
+    f(0) = 0;
+    f(1) = 1;
+    f(2) = 1;
+    f(n) = f(n-1) + f(n-2)
+
+    Fibonacci Zahlen von f(1) .. f(1480) rückwärts ausgeben.
+ */
+
+var fibs = [0,1];
+
+var fibonacci = function(n)
+{
+//    if (fibs[n] == undefined)
     if (isNaN(n))
         return NaN;
-    else if (n in fibCache)
-        return fibCache[n];
-//    else if (n == 0)
-//        return 0;
-//    else if (n == 1)
-//        return 1;
-    else {
-        fibCache[n] = fibonacci(n - 1) + fibonacci(n - 2);
-        return fibCache[n];
-    }
+    if (! (n in fibs))
+        fibs[n] = fibonacci(n-2) + fibonacci(n-1);
+    return fibs[n];
+//    if (n == 0) return 0;
+//    if (n == 1) return 1;
+//    if (n == 2) return 1;
+//    return fibonacci(n-2) + fibonacci(n-1);
+};
 
-}
 
-for (var n = 0; n <= 1500; n++)
-    fibonacci(n);
+fibonacci(1500);
+console.log()
+console.log(fibs.reverse());
 
-for (var n in fibCache) {
-    console.log(n + "=" + fibCache[n]);
-}
 
