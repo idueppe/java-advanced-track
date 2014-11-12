@@ -1,204 +1,212 @@
-"use strict";
-// JAVASCRIPT LITERALS
-var num = 12; // Number Floating
-var num2 = 1.2; // Number Floating
-
-console.log(num);
-console.log(num2);
-
-var str1 = 'String with single quote';
-var str2 = "String with double quote";
-
-var truthy = true;
-var falsy = false;
-
-var pattern = /javascript/; // <- Regulärer Ausdruck!!
-
-console.log(pattern.test("java"));
-console.log(pattern.test("javascript"));
-
-var obj = { x: 1, y: 2, z: undefined, v: null};
-console.log(obj.x);
-console.log("obj as JSON " + JSON.stringify(obj));
-
-obj.newProperty = "Neue Eigenschaft";
-
-console.log("obj as JSON " + JSON.stringify(obj));
-
-// /* var */ x = 1+2; // auf globaler Ebene kein Unterschied
-// klappt nicht mit "use strict";
-// y = x;
-// console.log(y);
-
-console.log(0xff);
-
-console.log(Math.PI);
+/**
+ * Created by idueppe on 21.10.14.
+ */
 
 
-// Numbers
+var msg = "Hello Node JS.";
+console.log(msg);
 
-var undendlich = Infinity;
 
-var positivUnendlich = Number.POSITIVE_INFINITY;
+// Single line comment
 
-var infinitNumber = 10 / 0;
+/*
+ Multi Line comment
+ */
 
-console.log(isNaN(infinitNumber));
-console.log("10 / 0 is infinite ? " + !isFinite(infinitNumber));
+var num = 12;
+num = 12.3;
 
-console.log("10/0 == NaN " + isNaN(10 / 0));
-console.log("0/0 == NaN " + isNaN(0 / 0));
+var stringWithSingleQuote = 'Dies ist ein String';
+var stringWithDoubleQuote = "Dies ist ein String";
 
-// Dates
+console.log(stringWithDoubleQuote === stringWithSingleQuote);
 
-var then = new Date(2014, 9, 24);
-var later = new Date(2014, 9, 24, 10, 57, 0);
+var object = {firstName: 'Ingo', lastName: 'Düppe'};
+
+console.log(object);
+console.log(object.firstName + " " + object.lastName);
+console.log(typeof object);
+
+var array = [1, 2, 3, 'Ingo', 'Dueppe'];
+
+
+console.log("Max: " + Math.max(1, 2, 3, 4, 5, 6));
+console.log("Zufall: " + Math.random());
+
+console.log(typeof num);
+console.log("Ist es eine Zahl? " + !isNaN(num));
+console.log("Ist sie unendlich? " + !isFinite(num));
+
+console.log("Ist string endlich? " + isFinite("mmmh"));
+console.log("Ist string endlich? " + isFinite(NaN));
+
+var i = 12 / 0; // Infinite
+var n = 0 / 0; // NaN
+console.log("Ist es eine Zahl? " + !isNaN(n));
+console.log("Ist sie unendlich? " + !isFinite(i) + " " + !isNaN(i));
+
+
+var underflow = Number.MIN_VALUE / 2;
+
+console.log("Underflow MIN_VALUE " + Number.MIN_VALUE);
+console.log("Underflow MIN_VALUE / 2 = " + underflow);
+
+console.log("------------------------------------------------  DATEs");
+
+var then = new Date(2014, 9, 21);
+var later = new Date(2014, 9, 21, 11, 19, 00);
+
 var now = new Date();
+var elapsed = now - then;
 
-var elapsed = later - then;
+console.log(then.toString());
+console.log(then.toISOString());
+console.log(then.toUTCString());
 
-console.log(then);
-console.log(later);
-console.log(now);
-console.log(elapsed);
+console.log("Differenz in Millisekunden " + elapsed);
 
-console.log(then == "Fri Oct 24 2014 00:00:00 GMT+0200 (CEST)");
-var date = new Date("Fri Oct 24 2014 00:00:00 GMT+0200 (CEST)");
-console.log(then.getDate() == date.getDate());
-console.log(then == date); // mmmh ???
-console.log(typeof then.getDate());
-console.log(then === "Fri Oct 24 2014 00:00:00 GMT+0200 (CEST)");
+console.log(then.getYear());
+console.log(then.getFullYear());
 
-// Strings
-
-var strWithEscapes = 'You\'re right!';
-console.log(strWithEscapes);
-
-strWithEscapes.charAt(0);
-var s = strWithEscapes.toUpperCase();
-console.log(s);
-
-console.log(s[1]); // statt charAt() einfach [];
-
-// Pattern Matching
-console.log("------------------------------");
-
-var text = "testing: 1,2,3";
-var textNotMatching = "testing";
-
-var pattern = /\d+/g;
-console.log(pattern.test(text));
-console.log(pattern.test(textNotMatching));
-console.log(text.search(pattern));
-console.log(text[text.search(pattern)]);
-console.log(text.match(pattern));
-console.log(text.replace(pattern, 'TEXT'));
-console.log(text.split(/\D+/));
-
-// Boolesche Ausdrücke
-var a = 5;
-var b = 1;
-if (a == 5)
-    b = b + 1;
-else
-    a = a + 1;
-
-// false : undefined, null, 0, -0, NaN, ""
-
-a = 0;
-if (!a)
-    console.log("0 is false");
+var start = new Date(0);
+console.log(start.toISOString());
 
 
-// Type Conversions
+console.log("-------------------------------------------------- String");
 
-console.log(typeof (Number("3")));
-console.log(typeof (String(false)));
-console.log(typeof (Boolean([])));
-console.log(typeof (Object(3)));
-console.log(JSON.stringify(Object(3)));
+var text = "hello, world";
+
+console.log(text.charAt(0)); // h
+console.log(text.charAt(text.length - 1)); // d
+console.log(text.substring(1, 4)); // ell
+console.log(text.slice(1, 4)); // ell
+console.log(text.slice(1, -4)); // ello, w
+console.log(text[0]);
+
+console.log(text.replace("h", "H"));
 
 
-var point = {x: 1, y: 2}.toString();
-console.log("Object toString " + point);
-point = {x: 1, y: 2}.toString();
+console.log("-------------------------------------------------- Functions");
 
-// functions
-console.log("---------------------------------")
 
-var func = function (parameter) {
-    console.log("--" + parameter);
-    return "something";
-};
+for (m in console)
+    console.log("console." + m + " " + typeof console[m]); // console. m
 
-console.log(func);
-console.log("Typeof Func" + typeof func);
-console.log(" " + func("xxx"));
-console.log(" " + func(null));
+console['log']("TEXT");
+console.log("TEXT");
 
-function square(x) {
-    return x * x;
+
+var out = function (msg) {
+    console.log(msg);
 }
 
-var area = {
-    width: 5,
-    height: 10,
-    space: function () {
-        return this.width * this.height;
+function log(msg) {
+    console.log(msg);
+}
+
+
+out("Funktionsaufruf von out");
+log("Funktionsaufruf von log");
+
+var lambda = function (lambda, msg) {
+    lambda(msg);
+}
+
+lambda(out, "lambda");
+
+// for (initialize; laufbedingung; increment) {...)
+
+for (var i = 0; i < 30; i++) {
+
+}
+
+out("------------------------------------------- ARRAYS")
+
+var numbers = new Array();
+out(typeof numbers);
+
+numbers[1] = 123;
+numbers[3] = "können auch strings";
+numbers[6] = {x: "oder objekte"};
+
+out("Länge  " + numbers.length);
+out("n[0] = " + numbers[0]);
+
+numbers.push("Neuer String");
+numbers.push({});
+numbers.push(124);
+
+out("After Push: " + numbers);
+
+function outObject(object) {
+    out("-----")
+    for (var p in object) {
+        out(p + " | " + (typeof p) + " | " + object[p] + " | " + typeof object[p]);
     }
 }
 
+outObject(numbers);
+outObject({x: 1, y: 2, z: function () {}});
+numbers.halloNeuesAttribute="HIER!";
+outObject(numbers);
+outArray(numbers);
 
-console.log(area.space());
-area.width = 6;
-console.log(area.space());
-console.log(JSON.stringify(area))
+var obj = {x: 1, y: 2, z: function () {}};
+obj[0] = "hello";
+obj.length=4;
+outArray(obj);
 
-
-//console.log(square(5));
-
-var add = function (a, b) {
-    var f = function (c) {
-        return a+c;
+function outArray(array) {
+    out("---A-");
+    for (var p = 0; p < array.length; p++) {
+        out(p + " | " + (typeof p) + " | " + array[p] + " | " + typeof array[p]);
     }
-    return b(a)+f(a);
-}
-
-console.log(add(4, function (x) {
-    return x + 4
-}));
-
-
-// LOOP
-
-for (var i = 0; i < 10; i++) {
-    console.log(i);
+    out("---A-");
 }
 
 
+out("---")
+function popoutArray(array) {
+
+    while (array.length > 0)
+        out(" > " + array.pop());
+}
+
+popoutArray(numbers);
 
 
+out("After Pop" + numbers);
+out("Länge  " + numbers.length);
+
+out ("----------------");
+
+var a = ["","",""];
+
+delete a[1];
+
+out(JSON.stringify(a));
+out(a);
+out(a.length);
+out(a[1] === undefined);
+delete a[2];
+out(a.length);
+
+a = [1,2,3,4,5,6];
+
+out(a.slice(1,-1));
+out(a);
+out(a.join("|"));
+out(a.reverse());
+out(a.sort());
+out(a.sort(function(a,b){return b-a;}));
+out(a.concat([1,2,3]).sort());
+
+out(a);
+a.splice(-4);
+out(a + " "+ a.length);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+out("hello","welt");
 
 
 
