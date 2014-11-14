@@ -8,7 +8,7 @@ import io.crowdcode.scrumr.exception.UserNotFoundException;
 public interface ProjectController
 {
 
-	public void createProject(ProjectDto currentProject) throws UserNotFoundException;
+	public String createProject(ProjectDto currentProject) throws UserNotFoundException;
 
 	public void updateProject(ProjectDto currentProject);
 

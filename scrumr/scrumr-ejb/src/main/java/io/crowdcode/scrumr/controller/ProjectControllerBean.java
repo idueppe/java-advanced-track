@@ -29,9 +29,9 @@ public class ProjectControllerBean implements ProjectController
 	private ProjectDtoConverter converter;
 	
 	@Override
-	public void createProject(ProjectDto project) throws UserNotFoundException
+	public String createProject(ProjectDto project) throws UserNotFoundException
 	{
-		projectManagementService.createProject(project.getName(), 
+		return projectManagementService.createProject(project.getName(), 
 				project.getDescription(), 
 				project.getProductOwnerMail(), 
 				project.getScrumMasterMail(), 
