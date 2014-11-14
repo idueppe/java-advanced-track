@@ -10,11 +10,15 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class SecurityResponseFilter implements ContainerResponseFilter
 {
-
+	
 	@Override
 	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException
 	{
-		responseContext.getHeaders().add("special-private-ingo-key", "lasödkfj nklödsnvldfj klö");
+		responseContext.getHeaders().add( "Access-Control-Allow-Origin", "*" );
+		responseContext.getHeaders().add( "Access-Control-Allow-Credentials", "true" );
+		responseContext.getHeaders().add( "Access-Control-Allow-Methods", "GET, POST, DELETE, PUT" );
+		responseContext.getHeaders().add( "Access-Control-Allow-Headers", "Content-Type" );
+		
 	}
 
 }
