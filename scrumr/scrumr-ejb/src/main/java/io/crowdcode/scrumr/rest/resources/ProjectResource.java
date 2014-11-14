@@ -52,7 +52,8 @@ public class ProjectResource
 			result.add(new ProjectReferenceDto(
 					project.getId(),
 					project.getName(),
-					uriBuilder.build(project.getId())
+					uriBuilder.resolveTemplate("projectId", project.getId()).build()
+//					uriBuilder.build(project.getId())
 					));
 		}
 		
