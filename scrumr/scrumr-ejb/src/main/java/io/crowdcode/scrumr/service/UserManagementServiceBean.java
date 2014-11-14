@@ -107,4 +107,10 @@ public class UserManagementServiceBean implements UserManagementService
 		return userDao.findAllUsers();
 	}
 
+	@Override
+	public User getUser(String userId)
+	{
+		return userDao.findUser(userId);
+	}
+
 }
