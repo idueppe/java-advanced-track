@@ -8,3 +8,5 @@ target
 gwt-unitCache
 .tern-project
 widgetsets
+bower_components
+.idea
