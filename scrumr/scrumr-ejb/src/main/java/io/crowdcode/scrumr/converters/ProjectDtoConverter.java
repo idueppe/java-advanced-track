@@ -19,6 +19,7 @@ public class ProjectDtoConverter extends AbstractDefaultConverter<Project, Proje
 	@Override
 	protected void copyProperties(Project source, ProjectDto target)
 	{
+		target.setId(source.getId());
 		target.setName(source.getName());
 		target.setDescription(source.getDescription());
 		
