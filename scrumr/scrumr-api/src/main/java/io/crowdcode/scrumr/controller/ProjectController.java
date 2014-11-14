@@ -14,4 +14,6 @@ public interface ProjectController
 
 	public List<ProjectDto> getProjects();
 
+	public ProjectDto getProject(String projectId);
+
 }

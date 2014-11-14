@@ -54,4 +54,10 @@ public class ProjectControllerBean implements ProjectController
 		return converter.convert(projectService.getProjectsByEmail(email));
 	}
 
+	@Override
+	public ProjectDto getProject(String projectId)
+	{
+		return converter.convert(projectService.getProject(projectId));
+	}
+
 }

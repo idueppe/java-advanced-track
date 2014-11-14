@@ -71,4 +71,10 @@ public class ProjectServiceBean implements ProjectService{
 		return project != null && project.getProductOwner() != null && StringUtils.equalsIgnoreCase(project.getProductOwner().getEmail(), email);
 	}
 
+	@Override
+	public Project getProject(String projectId)
+	{
+		return projectDao.getProject(projectId);
+	}
+
 }

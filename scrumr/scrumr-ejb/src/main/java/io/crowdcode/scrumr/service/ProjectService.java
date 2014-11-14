@@ -13,4 +13,6 @@ public interface ProjectService {
 	
 	public List<Project> getProjectsByEmail(String email);
 
+	public Project getProject(String projectId);
+
 }
