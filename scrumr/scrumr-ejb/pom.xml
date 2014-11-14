@@ -20,13 +20,14 @@
 		<dependency>
 			<groupId>io.crowdcode.scrumr</groupId>
 			<artifactId>scrumr-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-ioc</artifactId>
-			<version>${wicket.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.wicket</groupId> -->
+<!-- 			<artifactId>wicket-ioc</artifactId> -->
+<!-- 			<version>${wicket.version}</version> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>javax</groupId>

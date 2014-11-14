@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="scrumrApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Scrumr AngularJS</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+</head>
+<body>
+    <h1>Hello World!</h1>
+
+    <div>
+        <input type="text" ng-model="search">
+        <p ng-show="search">Du suchst gerade nach: {{ search }}</p>
+
+        <table class="table" ng-controller="ArticlesCtrl">
+            <tr ng-repeat="article in articles | filter:search ">
+                <td>{{ article.id }}</td>
+                <td>{{ article.name }}</td>
+                <td>{{ article.price }}</td>
+            </tr>
+        </table>
+
+        <div ng-controller="UsersCtrl">
+
+            <table class="table">
+                <tr ng-repeat="user in users">
+                   <td>{{ user.id }}</td>
+                   <td>{{ user.email }}</td>
+                   <td>{{ user.fullname }}</td>
+                </tr>
+            </table>
+
+            <button ng-click="reloadUsers"></button>
+        </div>
+
+    </div>
+
+
+    <script src="jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="angular.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
