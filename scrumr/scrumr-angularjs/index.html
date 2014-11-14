@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Scrumr</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+</head>
+<body ng-init="articles = ['Pizza Margherita', 'Pizza Tonno', 'Pizza Diabolo']">
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1>Hello Angular</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-10">
+                <input type="text" ng-model="search">
+                <p ng-show="search">Du suchst gerade nach: {{ search }}</p>
+                <p>{{ 1 +2 +3 }}</p>
+                <p>{{ search.toUpperCase() }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-10">
+                <table class="table">
+                    <tr ng-repeat="article in articles | filter:search">
+                        <td>{{ article }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="angular.js"></script>
+</body>
+</html>
