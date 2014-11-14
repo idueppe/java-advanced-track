@@ -63,4 +63,10 @@ public class UserDaoBean implements UserDao
 		return query.getResultList();
 	}
 
+	@Override
+	public User findUser(String userId)
+	{
+		return em.find(User.class, userId);
+	}
+
 }
