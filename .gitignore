@@ -10,3 +10,5 @@ gwt-unitCache
 widgetsets
 bower_components
 .idea
+node_modules
+
