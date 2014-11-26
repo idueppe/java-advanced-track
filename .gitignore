@@ -5,3 +5,10 @@ target
 *.*~
 .idea
 *.iml
+gwt-unitCache
+.tern-project
+widgetsets
+bower_components
+.idea
+node_modules
+
