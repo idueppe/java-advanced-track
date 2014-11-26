@@ -23,4 +23,6 @@ public interface UserManagementService
 
 	public List<User> getUserList();
 
+	public User getUser(String userId);
+
 }

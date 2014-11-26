@@ -20,4 +20,6 @@ public interface UserDao
 
 	public List<User> findAllUsers();
 
+	public User findUser(String userId);
+
 }

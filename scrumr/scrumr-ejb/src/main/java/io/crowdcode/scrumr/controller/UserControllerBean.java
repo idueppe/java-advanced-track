@@ -66,4 +66,10 @@ public class UserControllerBean implements UserController
 		userManagementService.updateUser(user.getEmail(), user.getFullname(), user.getPassword(), user.getEmail(), user.isAdmin());
 	}
 
+	@Override
+	public UserDto getUser(String userId)
+	{
+		return userDtoConverter.convert(userManagementService.getUser(userId));
+	}
+
 }

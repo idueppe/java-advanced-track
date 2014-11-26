@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tbl_spring")
+@Table(name="tbl_sprint")
 public class Sprint extends AbstractEntity
 {
 

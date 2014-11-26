@@ -19,10 +19,6 @@
   </modules>
 
 	<properties>
-		<!-- Explicitly declaring the source encoding eliminates the following 
-			message: -->
-		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
-			resources, i.e. build is platform dependent! -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<version.javaee>7.0</version.javaee>
@@ -32,6 +28,7 @@
 		<version.ejb.plugin>2.3</version.ejb.plugin>
 		<version.surefire.plugin>2.10</version.surefire.plugin>
 		<version.war.plugin>2.4</version.war.plugin>
+		<wicket.version>6.16.0</wicket.version>
 
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>1.7</maven.compiler.target>
@@ -67,15 +64,20 @@
 				<artifactId>scrumr-jsf</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
-				<scope>compile</scope>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>io.crowdcode.scrumr</groupId>
 				<artifactId>scrumr-wicket</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
-				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>io.crowdcode.scrumr</groupId>
+				<artifactId>scrumr-vaadin</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
 			</dependency>
 
 			<dependency>
@@ -139,5 +141,41 @@
 
 		</dependencies>
 	</dependencyManagement>
+
+	  <reporting>
+    <plugins>
+      	<plugin>
+        	<groupId>org.codehaus.mojo</groupId>
+        	<artifactId>findbugs-maven-plugin</artifactId>
+        	<version>3.0.0</version>
+      	</plugin>
+        <plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-pmd-plugin</artifactId>
+        	<version>3.2</version>
+      	</plugin>
+        <plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-jxr-plugin</artifactId>
+        	<version>2.4</version>
+      	</plugin>
+        <plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-surefire-report-plugin</artifactId>
+        	<version>2.17</version>
+      	</plugin>
+      	<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>cobertura-maven-plugin</artifactId>
+			<version>2.6</version>
+			<configuration>
+				<formats>
+					<format>html</format>
+					<format>xml</format>
+				</formats>
+			</configuration>
+		</plugin>
+    </plugins>
+  </reporting>
 
 </project>

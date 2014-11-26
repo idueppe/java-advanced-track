@@ -1,6 +1,6 @@
 package io.crowdcode.scrumr;
 
-import io.crowdcode.scrumr.ui.ScrumrHomePage;
+import io.crowdcode.scrumr.users.HomePage;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -21,7 +21,7 @@ public class WicketApplication extends WebApplication
 	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
-		return ScrumrHomePage.class;
+		return HomePage.class;
 	}
 
 	/**
@@ -30,7 +30,8 @@ public class WicketApplication extends WebApplication
 	@Override
 	public void init()
 	{
-		getComponentInstantiationListeners().add(new JavaEEComponentInjector(this, new AppJndiNamingStrategy("scrumr-ejb")));
+		getComponentInstantiationListeners()
+		   .add(new JavaEEComponentInjector(this, new AppJndiNamingStrategy("scrumr-ejb")));
 		super.init();
 
 		// add your configuration here

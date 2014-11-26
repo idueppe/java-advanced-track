@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Fibonacci</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Enter a number:</label>
+            </div>
+        </div>
+        <div row="row">
+            <div class="col-sm-4">
+                <input  id="fibNumber" class="form-control" placeholder="Fibonacci">
+            </div>
+            <div class="col-sm-4">
+                <button id="calculateBtn" class="btn-primary btn">Calculate</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                Ergbnis ist <span id="fibResult">Irgend ein Text,der ersetzt wird.</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="fibonacci.js"></script>
+    <script>
+        jQuery(function(){
+            $("#calculateBtn").click(function() {
+                var numberStr = $("#fibNumber").val();
+                var num = parseFloat(numberStr);
+                var fibResult = fibonacci(num);
+                $("#fibResult").text("f("+num+")="+fibResult);
+            });
+        });
+
+    </script>
+</body>
+</html>

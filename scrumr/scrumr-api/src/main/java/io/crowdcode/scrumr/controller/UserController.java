@@ -19,4 +19,6 @@ public interface UserController
 
 	public void updateUser(UserDto newUser) throws UserNotFoundException, LastAdministorException;
 
+	public UserDto getUser(String userId);
+
 }

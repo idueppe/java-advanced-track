@@ -1,0 +1,28 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<div class="col-sm-8 col-sm-offset-1">
+		<h1>Users Admin</h1>
+		<span wicket:id="currentTime"> Aktuelle Zeit </span>
+	</div>
+	
+	<div class="row">
+	
+		<div class="col-sm-10">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Email</th>
+						<th>Fullname</th>
+						<th>Admin</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="users">
+						<td><span wicket:id="email"></span></td>
+						<td><span wicket:id="fullname"></span></td>
+						<td><span wicket:id="admin"></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</wicket:extend>

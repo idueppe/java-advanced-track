@@ -9,23 +9,50 @@ public class TemplatePage extends WebPage
 	private static final long serialVersionUID = 1L;
 	
 	private NavigationPanel navigationPanel;
+	private FeedbackPanel successMessagePanel;
+	private FeedbackPanel errorMessagePanel;
 
 	public TemplatePage(PageParameters parameters)
 	{
 		super(parameters);
+		navigationPanel = new NavigationPanel("navigationPanel");
 		
-		add(navigationPanel = new NavigationPanel("navigationPanel"));
-	}
+		successMessagePanel = new FeedbackPanel("successMessagePanel", new IFeedbackMessageFilter()
+		{
+			
+			private static final long serialVersionUID = 1L;
 
-	protected NavigationPanel getNavigationPanel()
-	{
+			@Override
+			public boolean accept(FeedbackMessage message)
+			{
+				return message.getLevel() <= FeedbackMessage.SUCCESS;
+			}
+		});
+		errorMessagePanel = new FeedbackPanel("errorMessagePanel", new IFeedbackMessageFilter()
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean accept(FeedbackMessage message)
+			{
+				return !(message.getLevel() <= FeedbackMessage.SUCCESS);
+			}
+		});
+		add(successMessagePanel);
+		add(errorMessagePanel);
+		add(navigationPanel);
+	}
+	
+	public NavigationPanel getNavigationPanel() {
 		return navigationPanel;
 	}
 
+	@Override
+	protected void onBeforeRender()
+	{
+		super.onBeforeRender();
+		errorMessagePanel.setVisible(errorMessagePanel.anyMessage());
+		successMessagePanel.setVisible(successMessagePanel.anyMessage());
+	}
+
 }
-
-
-
-
-
-
