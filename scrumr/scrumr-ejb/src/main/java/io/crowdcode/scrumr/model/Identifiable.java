@@ -3,8 +3,8 @@ package io.crowdcode.scrumr.model;
 public interface Identifiable
 {
 
-	public String getId();
+	void setId(String id);
 	
-	public void setId(String id);
-	
+	String getId();
+
 }

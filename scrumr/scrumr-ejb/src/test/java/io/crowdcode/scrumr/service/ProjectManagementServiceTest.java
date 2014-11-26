@@ -4,6 +4,7 @@ import static io.crowdcode.scrumr.test.TestUtils.withId;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
@@ -57,7 +58,45 @@ public class ProjectManagementServiceTest
 	}
 
 	@Test
-	public void test_creating_a_new_project() throws Exception
+	public void test_updating_a_new_project() throws Exception
+	{
+		// arrange
+
+		String name = "New JUnit Project";
+		String description = "Description of the Project";
+		String scrumMasterEmail = "scrummaster@junit.local";
+		String productOwnerEmail = "productowner@junit.local";
+		String devOneEmail = "devOne@junit.local";
+		String devTwoEmail = "devTwo@junit.local";
+		
+		User productOwner = new User().withEmail(productOwnerEmail);
+		User scrumMaster = new User().withEmail(scrumMasterEmail);
+		User devOne = new User().withEmail(devOneEmail);
+		User devTwo = new User().withEmail(devTwoEmail);
+		
+		Project project = new Project();
+		when(projectDao.getProject("projectId")).thenReturn(project);
+		when(userDao.findUserByEmail(productOwnerEmail)).thenReturn(productOwner);
+		when(userDao.findUserByEmail(scrumMasterEmail)).thenReturn(scrumMaster);
+		when(userDao.findUserByEmail(devOneEmail)).thenReturn(devOne);
+		when(userDao.findUserByEmail(devTwoEmail)).thenReturn(devTwo);
+		
+		// act
+		Project returned = projectManager.updateProject("projectId", name, description, productOwnerEmail, scrumMasterEmail, Arrays.asList(devOneEmail, devTwoEmail));
+		
+		// assert
+		verify(projectDao, times(1)).getProject("projectId");
+		verify(userDao, times(4)).findUserByEmail(anyString());
+		
+		assertThat(returned, is(project));
+		assertThat(returned.getName(), is(name));
+		assertThat(returned.getDescription(), is(description));
+		assertThat(returned.getDevelopers(), hasSize(2));
+		
+	}
+	
+	@Test
+	public void testThat_creating_a_project() throws Exception
 	{
 		// arrange
 
@@ -94,6 +133,7 @@ public class ProjectManagementServiceTest
 
 		assertThat(projectId, is("abc123"));
 	}
+	
 	
 	@Test(expected=UserNotFoundException.class)
 	public void test_exception_on_unknown_product_owner() throws Exception

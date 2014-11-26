@@ -3,7 +3,7 @@ package io.crowdcode.scrumr.controller;
 import io.crowdcode.scrumr.converters.ProjectDtoConverter;
 import io.crowdcode.scrumr.dto.ProjectDto;
 import io.crowdcode.scrumr.exception.UserNotFoundException;
-import io.crowdcode.scrumr.service.ProjectManagementServiceBean;
+import io.crowdcode.scrumr.service.ProjectManagementService;
 import io.crowdcode.scrumr.service.ProjectService;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class ProjectControllerBean implements ProjectController
 {
 
 	@Inject
-	private ProjectManagementServiceBean projectManagementService;
+	private ProjectManagementService projectManagementService;
 	
 	@Inject
 	private ProjectService projectService;
@@ -41,7 +41,6 @@ public class ProjectControllerBean implements ProjectController
 	@Override
 	public void updateProject(ProjectDto currentProject)
 	{
-		// FIXME implement update method.		
 	}
 
 	@Override
