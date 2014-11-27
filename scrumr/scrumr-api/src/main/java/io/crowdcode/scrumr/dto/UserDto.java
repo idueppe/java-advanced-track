@@ -24,6 +24,11 @@ public class UserDto implements Serializable
 		this.id = id;
 	}
 	
+	public void setLogStatement(String logStmt)
+	{
+		System.out.println(">>>>>>>>>>>>>>>>>>>>"+logStmt);
+	}
+	
 	public String getEmail()
 	{
 		return email;
