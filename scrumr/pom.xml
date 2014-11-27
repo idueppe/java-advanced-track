@@ -15,7 +15,7 @@
 		<module>scrumr-ear</module>
 		<module>scrumr-api</module>
 		<module>scrumr-cli</module>
-    	<module>scrumr-wicket</module>
+<!--     	<module>scrumr-wicket</module> -->
   </modules>
 
 	<properties>

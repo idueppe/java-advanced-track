@@ -22,16 +22,16 @@
 			<artifactId>scrumr-jsf</artifactId>
 			<type>war</type>
 		</dependency>
-		<dependency>
-			<groupId>io.crowdcode.scrumr</groupId>
-			<artifactId>scrumr-wicket</artifactId>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>io.crowdcode.scrumr</groupId>
-			<artifactId>scrumr-vaadin</artifactId>
-			<type>war</type>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>io.crowdcode.scrumr</groupId> -->
+<!-- 			<artifactId>scrumr-wicket</artifactId> -->
+<!-- 			<type>war</type> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>io.crowdcode.scrumr</groupId> -->
+<!-- 			<artifactId>scrumr-vaadin</artifactId> -->
+<!-- 			<type>war</type> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>io.crowdcode.scrumr</groupId>
 			<artifactId>scrumr-ejb</artifactId>
@@ -68,17 +68,17 @@
 							<contextRoot>/scrumr</contextRoot>
 						</webModule>
 
-						<webModule>
-							<groupId>io.crowdcode.scrumr</groupId>
-							<artifactId>scrumr-wicket</artifactId>
-							<contextRoot>/scrumr-wicket</contextRoot>
-						</webModule>
+<!-- 						<webModule> -->
+<!-- 							<groupId>io.crowdcode.scrumr</groupId> -->
+<!-- 							<artifactId>scrumr-wicket</artifactId> -->
+<!-- 							<contextRoot>/scrumr-wicket</contextRoot> -->
+<!-- 						</webModule> -->
 
-						<webModule>
-							<groupId>io.crowdcode.scrumr</groupId>
-							<artifactId>scrumr-vaadin</artifactId>
-							<contextRoot>/scrumr-vaadin</contextRoot>
-						</webModule>
+<!-- 						<webModule> -->
+<!-- 							<groupId>io.crowdcode.scrumr</groupId> -->
+<!-- 							<artifactId>scrumr-vaadin</artifactId> -->
+<!-- 							<contextRoot>/scrumr-vaadin</contextRoot> -->
+<!-- 						</webModule> -->
 					</modules>
 					<fileNameMapping>no-version</fileNameMapping>
 				</configuration>
