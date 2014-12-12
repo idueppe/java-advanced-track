@@ -1,0 +1,49 @@
+<style>
+    input.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+    input.ng-valid {
+        border: 1px solid green;
+    }
+    .userInfo.ng-enter {
+        -webkit-transition:0.5s linear all;
+        transition:0.5s linear all;
+        background-color: yellow;
+    }
+    .userInfo.ng-enter-active {
+        background-color: white;
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-12">
+        <form name="userForm" ng-submit="addUser()">
+            <label>E-Mail</label>
+            <input name="email" type="email" ng-model="user.email" required="true">
+            <span ng-show="userForm.email.$dirty && userForm.email.$error.required"> is required!</span>
+            <span ng-show="userForm.email.$dirty && userForm.email.$error.email"> is not a email.</span>
+            <label>Fullname</label>
+            <input name="fullname" type="text" ng-model="user.fullname" required="true">
+            <span ng-show="userForm.fullname.$dirty && userForm.fullname.$error.required"> your name is required.</span>
+            <label>Password</label>
+            <input name="password" type="password" ng-model="user.password" required="true">
+            <span ng-show="userForm.password.$dirty && userForm.password.$error.required"> is required.</span>
+
+            <button class="btn btn-primary" ng-disabled="userForm.$invalid">Add User</button>
+
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table">
+            <tr ng-repeat="user in users | filter:search" class="userInfo">
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td><a href="{{ user.link }}">{{ user.link }}</a></td>
+            </tr>
+        </table>
+    </div>
+</div>

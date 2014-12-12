@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-lg-12">
+        <input type="text" ng-model="search">
+        <p ng-show="search">Du suchst gerade nach: {{ search.toUpperCase() + "!" }}</p>
+    </div>
+</div>
+
+<div class="row" ng-controller="ArticleCtrl">
+    <div class="col-lg-12">
+        <table class="table">
+            <tr ng-repeat="article in articles | filter:search">
+                <td>{{ article.id }}</td>
+                <td>{{ article.name }}</td>
+                <td>{{ article.price }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
